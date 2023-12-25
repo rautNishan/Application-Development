@@ -1,0 +1,35 @@
+@namespace FinalCoffee1.Pages.admin
+@using FinalCoffee1.common.helperServices;
+@using FinalCoffee1.Modules.Admin.service;
+@using System.Diagnostics
+@inject SessionService sessionService;
+@inject NavigationManager NavigationManager;
+@inject NotificationService notificationService;
+@inject AdminService adminService;
+@page "/admin/logout"
+
+<button @onclick="HandleSubmit">Logout</button>
+
+
+
+@code {
+    private string? message = "";
+    private string? messageClass = "";
+    private async Task HandleSubmit()
+    {
+        var result = await adminService.logOut();
+        if (result.Success)
+        {
+            sessionService.SetCurrentUser(false);
+            message = result.Message;
+            messageClass = "success-message";
+            notificationService.Notify(message, messageClass);
+            NavigationManager.NavigateTo("/admin/login");
+        }
+        else
+        {
+            message = "Logout Failed";
+            messageClass = "alert-danger";
+        }
+    }
+}

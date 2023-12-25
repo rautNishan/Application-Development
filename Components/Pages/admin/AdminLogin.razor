@@ -1,0 +1,52 @@
+@page "/admin/login"
+@namespace FinalCoffee1.Pages.admin
+@using FinalCoffee1.Modules.Admin.model
+@using FinalCoffee1.Modules.Admin.service;
+@using FinalCoffee1.common.helperServices;
+@inject NavigationManager navigationManager
+@inject AdminService adminService;
+@inject NotificationService notificationService;
+@inject SessionService sessionService;
+@using Microsoft.Extensions.Logging
+@using System.Diagnostics
+@inject SessionService sessionService;
+<h3>Admin Login</h3>
+<Form ButtonLabel="Log in" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
+@code {
+    private string? message = "";
+    private string? messageClass = "";
+    AdminModel Model = new AdminModel();
+    protected override void OnInitialized()
+    {
+        message = notificationService.Message;
+        messageClass = notificationService.MessageClass;
+        notificationService.Clear();
+    }
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            Trace.WriteLine("This is Login");
+            var result = await adminService.Login(Model);
+            if (result.Success)
+            {
+                sessionService.SetCurrentUser(true);
+                sessionService.NotifyStateChanged();
+                message = result.Message;
+                messageClass = "success-message";
+                navigationManager.NavigateTo("/");
+            }
+            else
+            {
+                message = result.Message;
+                messageClass = "error-message";
+            }
+        }
+        catch (Exception error)
+        {
+            message = error.Message;
+        }
+
+    }
+
+}

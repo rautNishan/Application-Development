@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\FinalCoffee1.props" />
+</Project>

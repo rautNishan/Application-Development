@@ -1,0 +1,61 @@
+﻿@using FinalCoffee1.common.helperServices;
+@using FinalCoffee1.Modules.Admin.service;
+@inject SessionService sessionService;
+@inject AdminService adminService;
+@using FinalCoffee1.common.helperClass;
+@using System.Diagnostics
+@implements IDisposable
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">FinalCoffee1</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        @if (!sessionService.IsUserLoggedIn())
+        {
+            Trace.WriteLine("User is logged in");
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/admin/login">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Login
+                </NavLink>
+            </div>
+        }
+        @if (!sessionService.isAdminRegistered())
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/admin/register">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Register
+                </NavLink>
+            </div>
+        }   
+        @if (sessionService.IsUserLoggedIn())
+        {
+            Trace.WriteLine("User is not logged in");
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/admin/logout">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Logout
+                </NavLink>
+            </div>
+        }
+    </nav>
+</div>
+@code {
+    protected override void OnInitialized()
+    {
+        sessionService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        sessionService.OnChange -= StateHasChanged;
+    }
+}
