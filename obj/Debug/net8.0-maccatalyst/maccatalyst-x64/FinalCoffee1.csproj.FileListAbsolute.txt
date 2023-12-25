@@ -329,3 +329,4 @@ C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debu
 C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\FinalCoffee1.pdb
 C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\FinalCoffee1.genruntimeconfig.cache
 C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\ref\FinalCoffee1.dll
+C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\FinalCoffee1.sourcelink.json

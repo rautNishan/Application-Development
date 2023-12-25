@@ -24,7 +24,8 @@ namespace FinalCoffee1
 #endif
             builder.Services.AddSingleton<AdminService>();
             builder.Services.AddSingleton<NotificationService>();
-            builder.Services.AddSingleton<SessionService>();   
+            builder.Services.AddSingleton<SessionService>(); 
+            builder.Services.AddSingleton<AuthenticationService>();  
              return builder.Build();
         }
     }
