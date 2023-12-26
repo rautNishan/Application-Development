@@ -1,6 +1,101 @@
-@page "/admin/coffee"
-<h3>Coffee</h3>
+@page "/coffee/menue"
+@namespace FinalCoffee1.Pages.coffee
+@using FinalCoffee1.Modules.Coffee.model;
+@using FinalCoffee1.Modules.Admin.model;
+@using FinalCoffee1.Modules.Admin.service;
+@using FinalCoffee1.common.helperServices;
+@using FinalCoffee1.Pages.admin;
+@using System.Diagnostics
+@inject AdminService adminService;
+@inject NotificationService notificationService;
+@inject SessionService sessionService;
+<h3>Menue</h3>
+@if (!isAuthorization)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>CoffeeType</th>
+                <th>Size</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var coffee in coffeesList)
+            {
+                <tr>
+                    <td>sadasjhdjashdkjsahkhdksahdkashdsa</td>
+                    <td>@coffee.CoffeeType</td>
+                    <td>@coffee.Size</td>
+                    <td>@coffee.Price</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button @onclick="needAuthentication">Add Coffee</button>
+}
 
-@code{
-    
+@if (isAuthorization && needAuthorizad)
+{
+    <div>
+        <div>
+            <h2>Admin Login</h2>
+            <Form ButtonLabel="Log in" Model="AdminModel" OnSubmit="Login" message="@message"
+                messageClass="@messageClass" />
+            <form>
+                <button @onclick="authorized" color="red">Close</button>
+            </form>
+        </div>
+    </div>
+}
+@code {
+    private string? message = "";
+    private string? messageClass = "";
+    AdminModel AdminModel = new AdminModel();
+    bool isAuthorization = false;
+    bool needAuthorizad = true;
+    List<CoffeeModel> coffeesList = new List<CoffeeModel>();
+    protected override void OnInitialized()
+    {
+        notificationService.Clear();
+    }
+    public void needAuthentication()
+    {
+        Trace.WriteLine("THis is Need authorized: " + needAuthorizad);
+        if (needAuthorizad)
+        {
+            isAuthorization = true;
+        }
+        else
+        {
+            Trace.WriteLine("Now You Can Add Coffee");
+            isAuthorization = false;
+        }
+    }
+    public void authorized()
+    {
+        isAuthorization = false;
+    }
+    public async Task Login()
+    {
+        var result = await adminService.Login(AdminModel);
+        if (result.Success)
+        {
+            needAuthorizad = false;
+            isAuthorization = false;
+            message = "Login Failed";
+            messageClass = "alert-danger";
+            authorized();
+        }
+        else
+        {
+            message = "Login Failed";
+            messageClass = "alert-danger";
+        }
+    }
 }

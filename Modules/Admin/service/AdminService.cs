@@ -36,34 +36,48 @@ public class AdminService
             return new CustomType { Success = false, Message = ex.Message };
         }
     }
+
+    public async Task<CustomType> IsAdmin(AdminModel data)
+    {
+        var path = new FileManagement().DirectoryPath("database", "admin.json");
+        if (File.Exists(path))
+        {
+            var existingData = await File.ReadAllTextAsync(path);
+            if (!string.IsNullOrEmpty(existingData))
+            {
+                var existingAdmin = JsonSerializer.Deserialize<AdminModel>(existingData);
+                if (existingAdmin != null)
+                {
+                    var isAuthenticatedUser = authentication.Authenticate(existingAdmin, data);
+                    // Perform additional logic here if needed
+                    if (isAuthenticatedUser)
+                    {
+                        return new CustomType { Success = true};
+                    }
+                    else
+                    {
+                        return new CustomType { Success = false};
+                    }
+                }
+            }
+        }
+        return new CustomType { Success = false, Message = "" };
+    }
     //Login Logic
     public async Task<CustomType> Login(AdminModel data)
     {
         try
         {
-            var path = new FileManagement().DirectoryPath("database", "admin.json");
-            if (File.Exists(path))
-            {
-                var existingData = await File.ReadAllTextAsync(path);
-                if (!string.IsNullOrEmpty(existingData))
-                {
-                    var existingAdmin = JsonSerializer.Deserialize<AdminModel>(existingData);
-                    if (existingAdmin != null)
-                    {
-                        var isAuthenticatedUser = authentication.Authenticate(existingAdmin, data);
+            var isAuthenticatedUser = await this.IsAdmin(data);
 
-                        if (isAuthenticatedUser)
-                        {
-                            return new CustomType { Success = true, Message = "Login Success" };
-                        }
-                        else
-                        {
-                            return new CustomType { Success = false, Message = "Invalid Credentials" };
-                        }
-                    }
-                }
+            if (isAuthenticatedUser.Success)
+            {
+                return new CustomType { Success = true, Message = "Login Success" };
             }
-            return new CustomType { Success = false, Message = "Please Make Sure Admin is Resister" };
+            else
+            {
+                return new CustomType { Success = false, Message = "Invalid Credentials" };
+            }
         }
         catch (Exception ex)
         {
