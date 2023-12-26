@@ -17,7 +17,7 @@ public class AdminService
     }
 
     //Register Admin
-    public async Task<Type> Register(AdminModel data)
+    public async Task<CustomType> Register(AdminModel data)
     {
         try
         {
@@ -28,16 +28,16 @@ public class AdminService
             var jsonData = JsonSerializer.Serialize(data);
             await File.WriteAllTextAsync(path, jsonData);
             Trace.WriteLine(path);
-            return new Type { Success = true, Message = "Admin registered successfully" };
+            return new CustomType { Success = true, Message = "Admin registered successfully" };
         }
         catch (Exception ex)
         {
             Trace.WriteLine("Exception: {0}", ex.Message);
-            return new Type { Success = false, Message = ex.Message };
+            return new CustomType { Success = false, Message = ex.Message };
         }
     }
     //Login Logic
-    public async Task<Type> Login(AdminModel data)
+    public async Task<CustomType> Login(AdminModel data)
     {
         try
         {
@@ -54,27 +54,27 @@ public class AdminService
 
                         if (isAuthenticatedUser)
                         {
-                            return new Type { Success = true, Message = "Login Success" };
+                            return new CustomType { Success = true, Message = "Login Success" };
                         }
                         else
                         {
-                            return new Type { Success = false, Message = "Invalid Credentials" };
+                            return new CustomType { Success = false, Message = "Invalid Credentials" };
                         }
                     }
                 }
             }
-            return new Type { Success = false, Message = "Please Make Sure Admin is Resister" };
+            return new CustomType { Success = false, Message = "Please Make Sure Admin is Resister" };
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex);
 
-            return new Type { Success = false, Message = ex.Message };
+            return new CustomType { Success = false, Message = ex.Message };
         }
     }
-    public Task<Type> logOut()
+    public Task<CustomType> logOut()
     {
-        return Task.FromResult(new Type { Success = true, Message = "Logout Success" });
+        return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
     }
 
 }
