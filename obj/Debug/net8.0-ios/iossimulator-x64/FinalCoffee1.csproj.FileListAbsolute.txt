@@ -343,3 +343,4 @@ C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debu
 C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-ios\iossimulator-x64\ref\FinalCoffee1.dll
 C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-ios\iossimulator-x64\FinalCoffee1.sourcelink.json
 C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-ios\iossimulator-x64\database\admin.json
+C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature

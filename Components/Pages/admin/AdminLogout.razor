@@ -21,6 +21,7 @@
         if (result.Success)
         {
             sessionService.SetCurrentUser(false);
+            sessionService.setNeedAuthorized(true);
             message = result.Message;
             messageClass = "success-message";
             notificationService.Notify(message, messageClass);

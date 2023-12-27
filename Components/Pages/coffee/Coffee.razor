@@ -40,11 +40,11 @@
     <button @onclick="needAuthentication">Add Coffee</button>
 }
 
-@if (isAuthorization && needAuthorizad)
+@if (isAuthorization && (sessionService.defaultNeedAuthorized()))
 {
+<h3>Admin Login</h3>
     <div>
         <div>
-            <h2>Admin Login</h2>
             <Form ButtonLabel="Log in" Model="AdminModel" OnSubmit="Login" message="@message"
                 messageClass="@messageClass" />
             <form>
@@ -58,7 +58,6 @@
     private string? messageClass = "";
     AdminModel AdminModel = new AdminModel();
     bool isAuthorization = false;
-    bool needAuthorizad = true;
     List<CoffeeModel> coffeesList = new List<CoffeeModel>();
     protected override void OnInitialized()
     {
@@ -66,15 +65,14 @@
     }
     public void needAuthentication()
     {
-        Trace.WriteLine("THis is Need authorized: " + needAuthorizad);
-        if (needAuthorizad)
+        if (sessionService.defaultNeedAuthorized())
         {
             isAuthorization = true;
         }
         else
         {
             Trace.WriteLine("Now You Can Add Coffee");
-            isAuthorization = false;
+            sessionService.setNeedAuthorized(false);
         }
     }
     public void authorized()
@@ -86,7 +84,7 @@
         var result = await adminService.Login(AdminModel);
         if (result.Success)
         {
-            needAuthorizad = false;
+            sessionService.setNeedAuthorized(false);
             isAuthorization = false;
             message = "Login Failed";
             messageClass = "alert-danger";

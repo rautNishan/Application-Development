@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using FinalCoffee1.common.helperClass;
 
 namespace FinalCoffee1.common.helperServices;
@@ -5,6 +6,8 @@ public class SessionService
 {
 
     private bool adminRegistered;
+    private bool? needAuthorized;
+
     public event Action OnChange;
     public void NotifyStateChanged() => OnChange?.Invoke();
     private bool currentUser;
@@ -31,5 +34,28 @@ public class SessionService
             return true;
         }
         return false;
+    }
+    public bool setNeedAuthorized(bool set)
+    {
+        this.needAuthorized = set;
+        OnChange?.Invoke();
+        return (bool)this.needAuthorized;
+    }
+    public bool isNeedAuthorized()
+    {
+        return (bool)this.needAuthorized;
+    }
+    public bool defaultNeedAuthorized()
+    {
+        Trace.WriteLine("This is Default need Authorized: " + this.needAuthorized);
+        if (this.needAuthorized.HasValue)
+        {
+            return (bool)this.needAuthorized;
+        }
+        else
+        {
+            this.needAuthorized = true;
+            return (bool)this.needAuthorized;
+        }
     }
 }
