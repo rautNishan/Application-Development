@@ -1,6 +1,7 @@
 Components\Layout\MainLayout.razor.css
 Components\Layout\NavMenu.razor.css
 database\admin.json
+database\coffee.json
 OpenSans-Regular.ttf
 appicon.ico
 appiconLargeTile.scale-100.png
@@ -65,6 +66,6 @@ wwwroot\css\admin\adminLogin.css
 wwwroot\css\app.css
 wwwroot\css\bootstrap\bootstrap.min.css
 wwwroot\css\bootstrap\bootstrap.min.css.map
-wwwroot\css\coffee\cofee.css
+wwwroot\css\coffee\coffee.css
 wwwroot\favicon.png
 wwwroot\index.html

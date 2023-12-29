@@ -52,8 +52,8 @@
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\css\bootstrap\bootstrap.min.css.map">
       <PackagePath>wwwroot\css\bootstrap\bootstrap.min.css.map</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\css\coffee\cofee.css">
-      <PackagePath>wwwroot\css\coffee\cofee.css</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\css\coffee\coffee.css">
+      <PackagePath>wwwroot\css\coffee\coffee.css</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\favicon.png">
       <PackagePath>wwwroot\favicon.png</PackagePath>
@@ -234,6 +234,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\admin.json">
       <PackagePath>database\admin.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\coffee.json">
+      <PackagePath>database\coffee.json</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\FinalCoffee1.deps.json">
       <PackagePath>FinalCoffee1.deps.json</PackagePath>

@@ -1,6 +1,7 @@
 ﻿using FinalCoffee1.Modules.Admin.service;
 using FinalCoffee1.common.helperServices;
 using Microsoft.Extensions.Logging;
+using FinalCoffee1.Modules.Coffee.service;
 
 namespace FinalCoffee1
 {
@@ -23,6 +24,7 @@ namespace FinalCoffee1
     		builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<AdminService>();
+            builder.Services.AddSingleton<CoffeeService>();
             builder.Services.AddSingleton<NotificationService>();
             builder.Services.AddSingleton<SessionService>(); 
             builder.Services.AddSingleton<AuthenticationService>();  

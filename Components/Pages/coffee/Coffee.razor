@@ -4,45 +4,77 @@
 @using FinalCoffee1.Modules.Admin.model;
 @using FinalCoffee1.Modules.Admin.service;
 @using FinalCoffee1.common.helperServices;
+@using FinalCoffee1.Modules.Coffee.service;
 @using FinalCoffee1.Pages.admin;
 @using System.Diagnostics
 @inject AdminService adminService;
 @inject NotificationService notificationService;
 @inject SessionService sessionService;
+@inject CoffeeService coffeeService;
 <h3>Menue</h3>
-@if (!isAuthorization)
-{
-    <table>
+ <table>
         <thead>
             <tr>
                 <th>Name</th>
                 <th>CoffeeType</th>
                 <th>Size</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var coffee in coffeesList)
+            @if (coffeesList != null && coffeesList.Count > 0)
             {
-                <tr>
-                    <td>sadasjhdjashdkjsahkhdksahdkashdsa</td>
-                    <td>@coffee.CoffeeType</td>
-                    <td>@coffee.Size</td>
-                    <td>@coffee.Price</td>
-                    <td>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
+                @foreach (var coffee in coffeesList)
+                {
+                    <tr>
+                        <td>@coffee.Name</td>
+                        <td>@coffee.CoffeeType</td>
+                        <td>@coffee.Size</td>
+                        <td>@coffee.Price</td>
+                        <td>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
-    <button @onclick="needAuthentication">Add Coffee</button>
+@if (!isAuthorization)
+{
+    //Take coffee inputs
+    <div class="form-group row">
+        <label for="coffeeName" class="col-sm-2 col-form-label">Coffee Name:</label>
+        <div class="col-sm-10">
+            <input type="text" id="coffeeName" class="form-control" required @bind="coffeeModel.Name" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="coffeeType" class="col-sm-2 col-form-label">Coffee Type:</label>
+        <div class="col-sm-10">
+            <input type="text" id="coffeeType" class="form-control" required @bind="coffeeModel.CoffeeType" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="coffeeSize" class="col-sm-2 col-form-label">Coffee Size:</label>
+        <div class="col-sm-10">
+            <input type="text" id="coffeeSize" class="form-control" required @bind="coffeeModel.Size" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="coffeePrice" class="col-sm-2 col-form-label">Coffee Price:</label>
+        <div class="col-sm-10">
+            <input type="number" id="coffeePrice" class="form-control" required @bind="coffeeModel.Price" />
+        </div>
+    </div>
+
+    <button type="submit" @onclick="needAuthentication">Add Coffee</button>
 }
 
 @if (isAuthorization && (sessionService.defaultNeedAuthorized()))
 {
-<h3>Admin Login</h3>
+    <h3>Admin Login</h3>
     <div>
         <div>
             <Form ButtonLabel="Log in" Model="AdminModel" OnSubmit="Login" message="@message"
@@ -58,12 +90,17 @@
     private string? messageClass = "";
     AdminModel AdminModel = new AdminModel();
     bool isAuthorization = false;
-    List<CoffeeModel> coffeesList = new List<CoffeeModel>();
-    protected override void OnInitialized()
+    CoffeeModel coffeeModel = new CoffeeModel();
+    List<CoffeeModel>? coffeesList = new List<CoffeeModel>();
+    protected async override void OnInitialized()
     {
         notificationService.Clear();
     }
-    public void needAuthentication()
+     protected async override Task OnParametersSetAsync()
+    {
+        coffeesList = await coffeeService.getCoffeeList();
+    }
+    public async void needAuthentication()
     {
         if (sessionService.defaultNeedAuthorized())
         {
@@ -72,7 +109,10 @@
         else
         {
             Trace.WriteLine("Now You Can Add Coffee");
+            await coffeeService.addCoffee(coffeeModel);
+            coffeesList = await coffeeService.getCoffeeList(); 
             sessionService.setNeedAuthorized(false);
+            StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
         }
     }
     public void authorized()
