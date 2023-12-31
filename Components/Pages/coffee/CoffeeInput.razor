@@ -1,0 +1,40 @@
+@namespace FinalCoffee1.Pages.coffee
+@using FinalCoffee1.Modules.Coffee.model
+<EditForm Model="@Model" OnValidSubmit="@OnSubmit">
+    <div class="form-group row">
+        <label for="coffeeName" class="col-sm-2 col-form-label">Coffee Name:</label>
+        <div class="col-sm-10">
+            <input type="text" id="coffeeName" class="form-control" required @bind="Model.Name" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="coffeeType" class="col-sm-2 col-form-label">Coffee Type:</label>
+        <div class="col-sm-10">
+            <input type="text" id="coffeeType" class="form-control" required @bind="Model.CoffeeType" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="coffeeSize" class="col-sm-2 col-form-label">Coffee Size:</label>
+        <div class="col-sm-10">
+            <input type="text" id="coffeeSize" class="form-control" required @bind="Model.Size" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="coffeePrice" class="col-sm-2 col-form-label">Coffee Price:</label>
+        <div class="col-sm-10">
+            <input type="number" id="coffeePrice" class="form-control" required @bind="Model.Price" />
+        </div>
+    </div>
+    <button type="submit">@ButtonLabel</button>
+</EditForm>
+@code {
+    [Parameter]
+    public EventCallback OnSubmit { get; set; }
+    [Parameter]
+    public CoffeeModel Model { get; set; }
+    [Parameter]
+    public string ButtonLabel { get; set; }
+    [Parameter]
+    public string FormType { get; set; }
+
+}

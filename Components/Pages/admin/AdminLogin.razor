@@ -11,7 +11,7 @@
 @using System.Diagnostics
 @inject SessionService sessionService;
 <h3>Admin Login</h3>
-<Form ButtonLabel="Log in" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
+<AdminForm ButtonLabel="Log in" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
 @code {
     private string? message = "";
     private string? messageClass = "";

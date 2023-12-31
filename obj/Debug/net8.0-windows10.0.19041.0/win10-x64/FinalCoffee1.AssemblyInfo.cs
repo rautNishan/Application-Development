@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FinalCoffee1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+29f132519eb99eb263ee09e5bd277a4ca6adcf31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+1f21cd332cba6077b3002c51a37aa62434410b2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("FinalCoffee1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FinalCoffee1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
