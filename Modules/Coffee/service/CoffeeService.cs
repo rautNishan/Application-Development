@@ -8,6 +8,7 @@ namespace FinalCoffee1.Modules.Coffee.service;
 public class CoffeeService
 {
     List<CoffeeModel> coffeeList;
+    int count = 0;
     public async Task<CustomType> addCoffee(CoffeeModel coffeeData)
     {
         try
@@ -18,6 +19,7 @@ public class CoffeeService
             {
                 Trace.WriteLine("This is Existing Data: " + "No Data");
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
+                coffeeData.Id=1;
                 coffeeList = new List<CoffeeModel> { coffeeData };
             }
             else
@@ -25,6 +27,7 @@ public class CoffeeService
                 var existingData = await File.ReadAllTextAsync(path);
                 Trace.WriteLine("This is Existing Data: " + existingData);
                 coffeeList = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
+                coffeeData.Id = coffeeList.Count + 1;
                 coffeeList.Add(coffeeData);
             }
             var jsonData = JsonSerializer.Serialize(coffeeList);
