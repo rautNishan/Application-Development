@@ -34,7 +34,27 @@
                     <td>@coffee.Size</td>
                     <td>@coffee.Price</td>
                     <td>
-                        <button class="edit-button">Edit</button>
+                        <button @onclick="() => OpenEditModel(coffee)" class="edit-button">Edit</button>
+                        @if (showEditModel)
+                        {
+                            <div class="modal" tabindex="-1" role="dialog" style="display:block;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Add Coffee</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <CoffeeInput ButtonLabel="Edit Coffee" Model="coffeeModel" OnSubmit="editCoffee"
+                                                message="notificationService.Message"
+                                                messageClass="notificationService.messageClass"></CoffeeInput>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                         <button class="delete-button">Delete</button>
                     </td>
                 </tr>
@@ -44,9 +64,8 @@
 </table>
 @if (!isAuthorization)
 {
-    //<CoffeeInput ButtonLabel="Add Coffee" Model="coffeeModel" OnSubmit="NeedAuthentication"></CoffeeInput>
-    <button type="button" class="btn btn-primary" @onclick="OpenModal">Add Coffee</button>
-    @if (showModal)
+    <button type="button" class="btn btn-primary" @onclick="OpenAddModal">Add Coffee</button>
+    @if (showAddModal)
     {
         <div class="modal" tabindex="-1" role="dialog" style="display:block;">
             <div class="modal-dialog" role="document">
@@ -87,10 +106,12 @@
 }
 @code {
     private string? message = "";
+    private CoffeeModel editCoffeeModel;
     private string? messageClass = "";
     AdminModel AdminModel = new AdminModel();
     bool isAuthorization = false;
-    bool showModal = false;
+    bool showAddModal = false;
+    bool showEditModel = false;
     CoffeeModel coffeeModel = new CoffeeModel();
     List<CoffeeModel>? coffeesList = new List<CoffeeModel>();
     protected async override void OnInitialized()
@@ -122,12 +143,24 @@
             Trace.WriteLine("Now You Can Add Coffee");
             var result = await coffeeService.addCoffee(coffeeModel);
             notificationService.Notify(result.Message, "success-message");
+            notificationService.Clear();
             Trace.WriteLine("This is Result: " + notificationService.Message);
             coffeesList = await coffeeService.getCoffeeList();
             sessionService.setNeedAuthorized(false);
             StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
         }
 
+    }
+    public async void editCoffee()
+    {
+        var noneedAuth = this.NeedAuthentication();
+        if (!noneedAuth)
+        {
+            var result = await coffeeService.editCoffee(coffeeModel.Id, coffeeModel);
+            notificationService.Notify(result.Message, "success-message");
+            coffeesList = await coffeeService.getCoffeeList();
+            StateHasChanged();
+        }
     }
     public void authorized()
     {
@@ -151,13 +184,20 @@
             messageClass = "error-message";
         }
     }
-    public void OpenModal()
+    public void OpenAddModal()
     {
-        showModal = true;
+        showAddModal = true;
+
+    }
+    public void OpenEditModel(CoffeeModel coffee)
+    {
+        coffeeModel = coffee;
+        showEditModel = true;
     }
 
     public void CloseModal()
     {
-        showModal = false;
+        showAddModal = false;
+        showEditModel = false;
     }
 }

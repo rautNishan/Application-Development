@@ -6,8 +6,8 @@ public class SessionService
 {
 
     private bool adminRegistered;
-    private bool? needAuthorized;
 
+    private bool? needAuthorized;
     public event Action OnChange;
     public void NotifyStateChanged() => OnChange?.Invoke();
     private bool currentUser;

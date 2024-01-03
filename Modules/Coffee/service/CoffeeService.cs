@@ -13,13 +13,14 @@ public class CoffeeService
     {
         try
         {
+            Trace.WriteLine("Calling Add Coffee");
             var path = new FileManagement().DirectoryPath("database", "coffee.json");
             Trace.WriteLine("This is Path: " + path);
             if (!File.Exists(path))
             {
                 Trace.WriteLine("This is Existing Data: " + "No Data");
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
-                coffeeData.Id=1;
+                coffeeData.Id = 1;
                 coffeeList = new List<CoffeeModel> { coffeeData };
             }
             else
@@ -63,5 +64,50 @@ public class CoffeeService
         await this.readCoffee();
         Trace.WriteLine("This is Coffee List: " + this.coffeeList);
         return this.coffeeList;
+    }
+    public async Task<CustomType> editCoffee(int id, CoffeeModel updatedCoffeeData)
+    {
+        try
+        {
+            var path = new FileManagement().DirectoryPath("database", "coffee.json");
+            Trace.WriteLine("This is ID: " + id);
+            Trace.WriteLine("This is Incomming Data: " + updatedCoffeeData.Name);
+            if (File.Exists(path))
+            {
+                var existingData = await File.ReadAllTextAsync(path);
+                coffeeList = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
+                var coffeeToEdit = coffeeList.FirstOrDefault(c => c.Id == id); // Corrected line
+                Trace.WriteLine("This is CoffeeToEdit: "+coffeeToEdit);
+                if (coffeeToEdit != null)
+                {
+                    coffeeToEdit.Name = updatedCoffeeData.Name;
+                    coffeeToEdit.CoffeeType = updatedCoffeeData.CoffeeType;
+                    coffeeToEdit.Size = updatedCoffeeData.Size;
+                    coffeeToEdit.Price = updatedCoffeeData.Price;
+
+                    int index = coffeeList.FindIndex(c => c.Id == id);
+                    coffeeList[index] = coffeeToEdit;
+                    foreach (var coffeees in coffeeList)
+                    {
+                        Trace.WriteLine(coffeees);
+                    }
+                    var jsonData = JsonSerializer.Serialize(coffeeList);
+                    await File.WriteAllTextAsync(path, jsonData);
+                    return new CustomType { Success = true, Message = "Updated" };
+                }
+                else
+                {
+                    return new CustomType { Success = false, Message = "Coffee not found" };
+                }
+            }
+            else
+            {
+                return new CustomType { Success = false, Message = "File not found" };
+            }
+        }
+        catch (Exception error)
+        {
+            return new CustomType { Success = false, Message = error.Message };
+        }
     }
 }
