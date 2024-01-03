@@ -55,7 +55,8 @@
                         <h5 class="modal-title">Add Coffee</h5>
                     </div>
                     <div class="modal-body">
-                        <CoffeeInput ButtonLabel="Add Coffee" Model="coffeeModel" OnSubmit="NeedAuthentication"></CoffeeInput>
+                        <CoffeeInput ButtonLabel="Add Coffee" Model="coffeeModel" OnSubmit="NeedAuthentication"
+                            message="notificationService.Message" messageClass="notificationService.messageClass"></CoffeeInput>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
@@ -64,7 +65,7 @@
             </div>
         </div>
     }
-}
+}x
 @if (isAuthorization && (sessionService.defaultNeedAuthorized()))
 {
     <div class="modal" tabindex="-1" role="dialog" style="display:block;">
@@ -75,7 +76,7 @@
                 </div>
                 <div class="modal-body">
                     <AdminForm ButtonLabel="Log in" Model="AdminModel" OnSubmit="Login" message="@message"
-                        messageClass="@messageClass" />
+                        messageClass="@messageClass"></AdminForm>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" @onclick="authorized">Close</button>
@@ -109,7 +110,9 @@
         else
         {
             Trace.WriteLine("Now You Can Add Coffee");
-            await coffeeService.addCoffee(coffeeModel);
+            var result = await coffeeService.addCoffee(coffeeModel);
+            notificationService.Notify(result.Message, "success-message");
+            Trace.WriteLine("This is Result: "+notificationService.Message);
             coffeesList = await coffeeService.getCoffeeList();
             sessionService.setNeedAuthorized(false);
             StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
@@ -127,14 +130,14 @@
         {
             sessionService.setNeedAuthorized(false);
             isAuthorization = false;
-            message = "Login Failed";
-            messageClass = "alert-danger";
+            message = result.Message;
+            messageClass = "success-message";
             authorized();
         }
         else
         {
-            message = "Login Failed";
-            messageClass = "alert-danger";
+            message = result.Message;
+            messageClass = "error-message";
         }
     }
     public void OpenModal()

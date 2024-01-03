@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-12-31T12:00:34.648</Modified>
+      <Modified>2024-01-03T07:37:25.306</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-12-29T16:00:38.134</Modified>
+      <Modified>2023-12-31T14:05:15.728</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\FinalCoffee1.runtimeconfig.json">
       <PackagePath>FinalCoffee1.runtimeconfig.json</PackagePath>
-      <Modified>2023-12-27T16:31:55.117</Modified>
+      <Modified>2023-12-31T14:05:51.500</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\FinalCoffee1.dll">
       <PackagePath>FinalCoffee1.dll</PackagePath>
-      <Modified>2023-12-31T12:00:34.460</Modified>
+      <Modified>2024-01-03T07:37:24.336</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>FinalCoffee1.exe</PackagePath>
-      <Modified>2023-12-31T12:00:34.467</Modified>
+      <Modified>2024-01-03T07:37:24.429</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -55,7 +55,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\css\admin\adminLogin.css">
       <PackagePath>wwwroot\css\admin\adminLogin.css</PackagePath>
-      <Modified>2023-12-26T14:39:27.225</Modified>
+      <Modified>2024-01-02T07:56:40.136</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\css\app.css">
       <PackagePath>wwwroot\css\app.css</PackagePath>
@@ -71,7 +71,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\css\coffee\coffee.css">
       <PackagePath>wwwroot\css\coffee\coffee.css</PackagePath>
-      <Modified>2023-12-27T17:02:58.878</Modified>
+      <Modified>2023-12-31T14:08:30.991</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\wwwroot\favicon.png">
       <PackagePath>wwwroot\favicon.png</PackagePath>
@@ -83,23 +83,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.066</Modified>
+      <Modified>2023-12-31T14:05:12.767</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.079</Modified>
+      <Modified>2023-12-31T14:05:12.777</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.096</Modified>
+      <Modified>2023-12-31T14:05:12.798</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.121</Modified>
+      <Modified>2023-12-31T14:05:12.831</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.216</Modified>
+      <Modified>2023-12-31T14:05:12.945</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
@@ -107,207 +107,207 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2023-12-27T16:31:01.255</Modified>
+      <Modified>2023-12-31T14:05:13.014</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.840</Modified>
+      <Modified>2023-12-31T14:05:13.874</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.866</Modified>
+      <Modified>2023-12-31T14:05:13.898</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.892</Modified>
+      <Modified>2023-12-31T14:05:13.933</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.936</Modified>
+      <Modified>2023-12-31T14:05:13.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:02.065</Modified>
+      <Modified>2023-12-31T14:05:14.093</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.404</Modified>
+      <Modified>2023-12-31T14:05:13.301</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.409</Modified>
+      <Modified>2023-12-31T14:05:13.311</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.438</Modified>
+      <Modified>2023-12-31T14:05:13.359</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.415</Modified>
+      <Modified>2023-12-31T14:05:13.323</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.423</Modified>
+      <Modified>2023-12-31T14:05:13.338</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.362</Modified>
+      <Modified>2023-12-31T14:05:13.222</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.371</Modified>
+      <Modified>2023-12-31T14:05:13.241</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.399</Modified>
+      <Modified>2023-12-31T14:05:13.291</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.379</Modified>
+      <Modified>2023-12-31T14:05:13.261</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.385</Modified>
+      <Modified>2023-12-31T14:05:13.273</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.274</Modified>
+      <Modified>2023-12-31T14:05:13.041</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.281</Modified>
+      <Modified>2023-12-31T14:05:13.061</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.289</Modified>
+      <Modified>2023-12-31T14:05:13.097</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.298</Modified>
+      <Modified>2023-12-31T14:05:13.119</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.313</Modified>
+      <Modified>2023-12-31T14:05:13.138</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.318</Modified>
+      <Modified>2023-12-31T14:05:13.152</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.323</Modified>
+      <Modified>2023-12-31T14:05:13.165</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.353</Modified>
+      <Modified>2023-12-31T14:05:13.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.330</Modified>
+      <Modified>2023-12-31T14:05:13.180</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.337</Modified>
+      <Modified>2023-12-31T14:05:13.189</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.537</Modified>
+      <Modified>2023-12-31T14:05:13.520</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.550</Modified>
+      <Modified>2023-12-31T14:05:13.536</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.565</Modified>
+      <Modified>2023-12-31T14:05:13.555</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.592</Modified>
+      <Modified>2023-12-31T14:05:13.576</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.641</Modified>
+      <Modified>2023-12-31T14:05:13.609</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.487</Modified>
+      <Modified>2023-12-31T14:05:13.454</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.495</Modified>
+      <Modified>2023-12-31T14:05:13.466</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.503</Modified>
+      <Modified>2023-12-31T14:05:13.476</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.511</Modified>
+      <Modified>2023-12-31T14:05:13.487</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.526</Modified>
+      <Modified>2023-12-31T14:05:13.508</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.451</Modified>
+      <Modified>2023-12-31T14:05:13.374</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.459</Modified>
+      <Modified>2023-12-31T14:05:13.390</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.465</Modified>
+      <Modified>2023-12-31T14:05:13.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.471</Modified>
+      <Modified>2023-12-31T14:05:13.422</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.481</Modified>
+      <Modified>2023-12-31T14:05:13.444</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.674</Modified>
+      <Modified>2023-12-31T14:05:13.628</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.703</Modified>
+      <Modified>2023-12-31T14:05:13.652</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.724</Modified>
+      <Modified>2023-12-31T14:05:13.730</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.755</Modified>
+      <Modified>2023-12-31T14:05:13.773</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.824</Modified>
+      <Modified>2023-12-31T14:05:13.848</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.297</Modified>
+      <Modified>2023-12-31T14:05:13.106</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.310</Modified>
+      <Modified>2023-12-31T14:05:13.124</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.321</Modified>
+      <Modified>2023-12-31T14:05:13.140</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.339</Modified>
+      <Modified>2023-12-31T14:05:13.166</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2023-12-27T16:31:01.383</Modified>
+      <Modified>2023-12-31T14:05:13.211</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\admin.json">
       <PackagePath>database\admin.json</PackagePath>
@@ -315,11 +315,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\coffee.json">
       <PackagePath>database\coffee.json</PackagePath>
-      <Modified>2023-12-31T11:45:53.661</Modified>
+      <Modified>2024-01-03T03:13:07.106</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\FinalCoffee1.deps.json">
       <PackagePath>FinalCoffee1.deps.json</PackagePath>
-      <Modified>2023-12-27T16:31:55.113</Modified>
+      <Modified>2023-12-31T14:05:51.412</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.31\lib\net6.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -691,11 +691,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\scopedcss\bundle\FinalCoffee1.styles.css">
       <PackagePath>wwwroot\FinalCoffee1.styles.css</PackagePath>
-      <Modified>2023-12-27T16:30:53.303</Modified>
+      <Modified>2023-12-31T14:05:05.987</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\scopedcss\projectbundle\FinalCoffee1.bundle.scp.css">
       <PackagePath>wwwroot\FinalCoffee1.bundle.scp.css</PackagePath>
-      <Modified>2023-12-27T16:30:53.305</Modified>
+      <Modified>2023-12-31T14:05:05.990</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\Components\Layout\MainLayout.razor.css">
       <PackagePath>Components\Layout\MainLayout.razor.css</PackagePath>

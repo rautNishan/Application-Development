@@ -16,7 +16,7 @@
     private string? message = "";
     private string? messageClass = "";
     AdminModel Model = new AdminModel();
-    
+
     protected override void OnInitialized()
     {
         message = notificationService.Message;
@@ -31,6 +31,7 @@
             var result = await adminService.Login(Model);
             if (result.Success)
             {
+                Trace.WriteLine(result);
                 sessionService.SetCurrentUser(true);
                 sessionService.NotifyStateChanged();
                 message = result.Message;
