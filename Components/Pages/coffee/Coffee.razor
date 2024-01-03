@@ -55,7 +55,7 @@
                         <h5 class="modal-title">Add Coffee</h5>
                     </div>
                     <div class="modal-body">
-                        <CoffeeInput ButtonLabel="Add Coffee" Model="coffeeModel" OnSubmit="NeedAuthentication"
+                        <CoffeeInput ButtonLabel="Add Coffee" Model="coffeeModel" OnSubmit="addCoffee"
                             message="notificationService.Message" messageClass="notificationService.messageClass"></CoffeeInput>
                     </div>
                     <div class="modal-footer">
@@ -65,7 +65,7 @@
             </div>
         </div>
     }
-}x
+}
 @if (isAuthorization && (sessionService.defaultNeedAuthorized()))
 {
     <div class="modal" tabindex="-1" role="dialog" style="display:block;">
@@ -101,22 +101,33 @@
     {
         coffeesList = await coffeeService.getCoffeeList();
     }
-    public async Task NeedAuthentication()
+    public bool NeedAuthentication()
     {
         if (sessionService.defaultNeedAuthorized())
         {
             isAuthorization = true;
+            return true;
         }
         else
+        {
+            return false;
+        }
+    }
+
+    public async void addCoffee()
+    {
+        var noneedAuth = this.NeedAuthentication();
+        if (!noneedAuth)
         {
             Trace.WriteLine("Now You Can Add Coffee");
             var result = await coffeeService.addCoffee(coffeeModel);
             notificationService.Notify(result.Message, "success-message");
-            Trace.WriteLine("This is Result: "+notificationService.Message);
+            Trace.WriteLine("This is Result: " + notificationService.Message);
             coffeesList = await coffeeService.getCoffeeList();
             sessionService.setNeedAuthorized(false);
             StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
         }
+
     }
     public void authorized()
     {

@@ -47,7 +47,6 @@ public class SessionService
     }
     public bool defaultNeedAuthorized()
     {
-        Trace.WriteLine("This is Default need Authorized: " + this.needAuthorized);
         if (this.needAuthorized.HasValue)
         {
             return (bool)this.needAuthorized;
