@@ -12,6 +12,7 @@ public class AdminService
 {
     private readonly AuthenticationService authentication;
     private readonly SessionService sessionService;
+    List<StaffModel> staffList;
     public AdminService(AuthenticationService authentication)
     {
         this.authentication = authentication;
@@ -22,6 +23,7 @@ public class AdminService
     {
         try
         {
+            data.userType = UserType.Admin;
             var path = new FileManagement().DirectoryPath("database", "admin.json");
             Trace.WriteLine("This is Path: " + path);
             Directory.CreateDirectory(Path.GetDirectoryName(path));
@@ -82,6 +84,7 @@ public class AdminService
     {
         try
         {
+            staffData.userType = UserType.Staff;
             var path = new FileManagement().DirectoryPath("database", "staff.json");
             Trace.WriteLine("This is Path: " + path);
             Directory.CreateDirectory(Path.GetDirectoryName(path));
@@ -95,7 +98,8 @@ public class AdminService
             int maxId = staffList.Any() ? staffList.Max(s => s.Id) : 0;
             staffData.Id = maxId + 1;
 
-            staffData.Password = this.authentication.GenerateHash(staffData.Password);
+            staffData.Password =  this.authentication.GenerateHash(staffData.Password);
+            Trace.WriteLine("This is PASSWORD: ", staffData.Password);
             staffList.Add(staffData);
 
             var jsonData = JsonSerializer.Serialize(staffList);
@@ -108,5 +112,30 @@ public class AdminService
             Trace.WriteLine("Exception: {0}", ex.Message);
             return new CustomType { Success = false, Message = ex.Message };
         }
+    }
+
+    public async Task readStaff()
+    {
+        try
+        {
+            var path = new FileManagement().DirectoryPath("database", "staff.json");
+            if (File.Exists(path))
+            {
+                var existingData = await File.ReadAllTextAsync(path);
+                Trace.WriteLine("This is Existing Data: " + existingData);
+                staffList = JsonSerializer.Deserialize<List<StaffModel>>(existingData) ?? new List<StaffModel>();
+            }
+        }
+        catch (Exception error)
+        {
+            Trace.WriteLine("This is Error: " + error.Message);
+        }
+
+    }
+    public async Task<List<StaffModel>> getStaffList()
+    {
+        await this.readStaff();
+        Trace.WriteLine("This is staff List: " + this.staffList);
+        return this.staffList;
     }
 }

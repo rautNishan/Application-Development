@@ -12,6 +12,7 @@
 @inject NotificationService notificationService;
 @inject SessionService sessionService;
 @inject CoffeeService coffeeService;
+@inject ActionService actionService;
 <h3>Menue</h3>
 <table>
     <thead>
@@ -98,7 +99,7 @@
                         messageClass="@messageClass"></AdminForm>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @onclick="authorized">Close</button>
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
                 </div>
             </div>
         </div>
@@ -122,7 +123,7 @@
     {
         coffeesList = await coffeeService.getCoffeeList();
     }
-    public bool NeedAuthentication()
+    public async Task<bool> NeedAuthentication()
     {
         if (sessionService.defaultNeedAuthorized())
         {
@@ -136,49 +137,42 @@
     }
     public async void deleteCoffee(CoffeeModel coffee)
     {
-        var result = await coffeeService.deleteCoffee(coffee.Id);
-        if (result.Success)
+        var needAuth = await this.NeedAuthentication();
+        if (!needAuth)
         {
-            coffeesList.Remove(coffee);
-            StateHasChanged();
+            var result = await actionService.Delete<CoffeeModel>(coffee.Id, "coffee.json");
+            if (result.Success)
+            {
+                coffeesList.Remove(coffee);
+                StateHasChanged();
+            }
+            else
+            {
+                notificationService.Notify(result.Message, "success-message");
+            }
         }
-        else
-        {
-            notificationService.Notify(result.Message, "success-message");
-        }
+
     }
     public async void addCoffee()
     {
-        var noneedAuth = this.NeedAuthentication();
-        if (!noneedAuth)
-        {
-            Trace.WriteLine("Now You Can Add Coffee");
-            var result = await coffeeService.addCoffee(coffeeModel);
-            notificationService.Notify(result.Message, "success-message");
-            notificationService.Clear();
-            Trace.WriteLine("This is Result: " + notificationService.Message);
-            coffeesList = await coffeeService.getCoffeeList();
-            sessionService.setNeedAuthorized(false);
-            CloseModal();
-            StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
-        }
+        Trace.WriteLine("Now You Can Add Coffee");
+        var result = await coffeeService.addCoffee(coffeeModel);
+        notificationService.Notify(result.Message, "success-message");
+        notificationService.Clear();
+        Trace.WriteLine("This is Result: " + notificationService.Message);
+        coffeesList = await coffeeService.getCoffeeList();
+        sessionService.setNeedAuthorized(false);
+        CloseModal();
+        StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
 
     }
     public async void editCoffee()
     {
-        var noneedAuth = this.NeedAuthentication();
-        if (!noneedAuth)
-        {
-            var result = await coffeeService.editCoffee(coffeeModel.Id, coffeeModel);
-            notificationService.Notify(result.Message, "success-message");
-            coffeesList = await coffeeService.getCoffeeList();
-            CloseModal();
-            StateHasChanged();
-        }
-    }
-    public void authorized()
-    {
-        isAuthorization = false;
+        var result = await actionService.Edit<CoffeeModel>(coffeeModel.Id, coffeeModel, "coffee.json");
+        notificationService.Notify(result.Message, "success-message");
+        coffeesList = await coffeeService.getCoffeeList();
+        CloseModal();
+        StateHasChanged();
     }
     //This is comment
     public async Task Login()
@@ -187,10 +181,9 @@
         if (result.Success)
         {
             sessionService.setNeedAuthorized(false);
-            isAuthorization = false;
             message = result.Message;
             messageClass = "success-message";
-            authorized();
+            CloseModal();
         }
         else
         {
@@ -198,20 +191,30 @@
             messageClass = "error-message";
         }
     }
-    public void OpenAddModal()
+    public async void OpenAddModal()
     {
-        showAddModal = true;
+        var result = await this.NeedAuthentication();
+        if (!result)
+        {
+            showAddModal = true;
+        }
 
     }
-    public void OpenEditModel(CoffeeModel coffee)
+    public async void OpenEditModel(CoffeeModel coffee)
     {
-        coffeeModel = coffee;
-        showEditModel = true;
+        var result = await this.NeedAuthentication();
+        if (!result)
+        {
+            coffeeModel = coffee;
+            showEditModel = true;
+        }
+
     }
 
     public void CloseModal()
     {
         showAddModal = false;
         showEditModel = false;
+        isAuthorization = false;
     }
 }

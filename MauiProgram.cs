@@ -20,15 +20,16 @@ namespace FinalCoffee1
             builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<AdminService>();
             builder.Services.AddSingleton<CoffeeService>();
             builder.Services.AddSingleton<NotificationService>();
-            builder.Services.AddSingleton<SessionService>(); 
-            builder.Services.AddSingleton<AuthenticationService>();  
-             return builder.Build();
+            builder.Services.AddSingleton<SessionService>();
+            builder.Services.AddSingleton<AuthenticationService>();
+            builder.Services.AddSingleton<ActionService>();
+            return builder.Build();
         }
     }
 }
