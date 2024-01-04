@@ -1,9 +1,9 @@
+using FinalCoffee1.Common.model;
+
 namespace FinalCoffee1.Modules.Staff.model
 {
-    public class StaffModel
+    public class StaffModel : CommonModel
     {
-        public int Id { get; set; }
-        public string? UserName { get; set; }
-        public string? Password { get; set; }
+
     }
 }

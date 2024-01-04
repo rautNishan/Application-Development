@@ -1,6 +1,7 @@
 
 namespace FinalCoffee1.Modules.Admin.service;
 using FinalCoffee1.Modules.Admin.model;
+using FinalCoffee1.Modules.Staff.model;
 using FinalCoffee1.common.helperClass;
 using System.Diagnostics;
 using System.IO;
@@ -17,7 +18,7 @@ public class AdminService
     }
 
     //Register Admin
-    public async Task<CustomType> Register(CommonModel data)
+    public async Task<CustomType> Register(AdminModel data)
     {
         try
         {
@@ -37,7 +38,7 @@ public class AdminService
         }
     }
     //Login Logic
-    public async Task<CustomType> Login(CommonModel data)
+    public async Task<CustomType> Login(AdminModel data)
     {
         try
         {
@@ -47,7 +48,7 @@ public class AdminService
                 var existingData = await File.ReadAllTextAsync(path);
                 if (!string.IsNullOrEmpty(existingData))
                 {
-                    var existingAdmin = JsonSerializer.Deserialize<CommonModel>(existingData);
+                    var existingAdmin = JsonSerializer.Deserialize<AdminModel>(existingData);
                     if (existingAdmin != null)
                     {
                         var isAuthenticatedUser = authentication.Authenticate(existingAdmin, data);
@@ -77,7 +78,7 @@ public class AdminService
         return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
     }
 
-    public async Task<CustomType> addStaff(CommonModel staffData)
+    public async Task<CustomType> addStaff(StaffModel staffData)
     {
         try
         {
@@ -85,11 +86,11 @@ public class AdminService
             Trace.WriteLine("This is Path: " + path);
             Directory.CreateDirectory(Path.GetDirectoryName(path));
 
-            List<CommonModel> staffList = new List<CommonModel>();
+            List<StaffModel> staffList = new List<StaffModel>();
             if (File.Exists(path))
             {
                 var existingData = await File.ReadAllTextAsync(path);
-                staffList = JsonSerializer.Deserialize<List<CommonModel>>(existingData) ?? new List<CommonModel>();
+                staffList = JsonSerializer.Deserialize<List<StaffModel>>(existingData) ?? new List<StaffModel>();
             }
             int maxId = staffList.Any() ? staffList.Max(s => s.Id) : 0;
             staffData.Id = maxId + 1;

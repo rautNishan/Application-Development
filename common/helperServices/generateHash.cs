@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 using System.Text;
-using FinalCoffee1.Modules.Admin.model;
+using FinalCoffee1.Common.model;
 
 namespace FinalCoffee1.common.helperServices;
 public class AuthenticationService

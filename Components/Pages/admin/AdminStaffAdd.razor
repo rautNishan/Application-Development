@@ -2,7 +2,10 @@
 @namespace FinalCoffee1.Pages.admin
 
 <h3>Add Staff</h3>
-@using FinalCoffee1.Modules.Admin.model
+@using FinalCoffee1.Modules.Admin.model;
+@using FinalCoffee1.Common.model;
+@using FinalCoffee1.Modules.Staff.model;
+@using FinalCoffee1.common.helperClass;
 @using FinalCoffee1.Modules.Admin.service
 @using FinalCoffee1.Pages.admin
 @using FinalCoffee1.common.helperServices
@@ -15,12 +18,13 @@
 <h3>Admin Register</h3>
 
 
-<AdminForm ButtonLabel="Add Staff" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
+<AdminForm ButtonLabel="Add Staff" Model="Model" OnSubmit="HandleSubmit" message="@message"
+    messageClass="@messageClass" />
 
 @code {
     private string message = "";
     private string messageClass = "";
-    CommonModel Model = new CommonModel();
+    StaffModel Model = new StaffModel();
 
     private async Task HandleSubmit()
     {

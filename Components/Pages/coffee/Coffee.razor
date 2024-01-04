@@ -94,7 +94,7 @@
                     <h5 class="modal-title">Admin Login</h5>
                 </div>
                 <div class="modal-body">
-                    <AdminForm ButtonLabel="Log in" Model="CommonModel" OnSubmit="Login" message="@message"
+                    <AdminForm ButtonLabel="Log in" Model="Model" OnSubmit="Login" message="@message"
                         messageClass="@messageClass"></AdminForm>
                 </div>
                 <div class="modal-footer">
@@ -108,7 +108,7 @@
     private string? message = "";
     private CoffeeModel editCoffeeModel;
     private string? messageClass = "";
-    CommonModel CommonModel = new CommonModel();
+    AdminModel Model = new AdminModel();
     bool isAuthorization = false;
     bool showAddModal = false;
     bool showEditModel = false;
@@ -183,7 +183,7 @@
     //This is comment
     public async Task Login()
     {
-        var result = await adminService.Login(CommonModel);
+        var result = await adminService.Login(Model);
         if (result.Success)
         {
             sessionService.setNeedAuthorized(false);

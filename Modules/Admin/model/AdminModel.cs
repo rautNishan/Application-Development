@@ -1,18 +1,10 @@
 
 using System.ComponentModel.DataAnnotations;
-
+using FinalCoffee1.Common.model;
 namespace FinalCoffee1.Modules.Admin.model
 {
-    public class CommonModel
+    public class AdminModel : CommonModel
     {
 
-        public int Id { get; set; }
-        public UserType userType { get; set; }
-
-        [StringLength(20, MinimumLength = 4, ErrorMessage = "User must be at least 4 characters long")]
-        public string? Username { get; set; }
-
-        [StringLength(20, MinimumLength = 4, ErrorMessage = "Password must be at least 6 characters long")]
-        public string? Password { get; set; }
     }
 }
