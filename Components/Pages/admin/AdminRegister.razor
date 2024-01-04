@@ -13,12 +13,12 @@
 <h3>Admin Register</h3>
 
 
-<Form ButtonLabel="Register" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
+<AdminForm ButtonLabel="Register" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
 
 @code {
     private string message = "";
     private string messageClass = "";
-    AdminModel Model = new AdminModel();
+    CommonModel Model = new CommonModel();
 
     private async Task HandleSubmit()
     {

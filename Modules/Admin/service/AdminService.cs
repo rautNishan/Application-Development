@@ -10,14 +10,14 @@ using FinalCoffee1.common.helperServices;
 public class AdminService
 {
     private readonly AuthenticationService authentication;
-
+    private readonly SessionService sessionService;
     public AdminService(AuthenticationService authentication)
     {
         this.authentication = authentication;
     }
 
     //Register Admin
-    public async Task<CustomType> Register(AdminModel data)
+    public async Task<CustomType> Register(CommonModel data)
     {
         try
         {
@@ -37,7 +37,7 @@ public class AdminService
         }
     }
     //Login Logic
-    public async Task<CustomType> Login(AdminModel data)
+    public async Task<CustomType> Login(CommonModel data)
     {
         try
         {
@@ -47,7 +47,7 @@ public class AdminService
                 var existingData = await File.ReadAllTextAsync(path);
                 if (!string.IsNullOrEmpty(existingData))
                 {
-                    var existingAdmin = JsonSerializer.Deserialize<AdminModel>(existingData);
+                    var existingAdmin = JsonSerializer.Deserialize<CommonModel>(existingData);
                     if (existingAdmin != null)
                     {
                         var isAuthenticatedUser = authentication.Authenticate(existingAdmin, data);
@@ -77,4 +77,35 @@ public class AdminService
         return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
     }
 
+    public async Task<CustomType> addStaff(CommonModel staffData)
+    {
+        try
+        {
+            var path = new FileManagement().DirectoryPath("database", "staff.json");
+            Trace.WriteLine("This is Path: " + path);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+
+            List<CommonModel> staffList = new List<CommonModel>();
+            if (File.Exists(path))
+            {
+                var existingData = await File.ReadAllTextAsync(path);
+                staffList = JsonSerializer.Deserialize<List<CommonModel>>(existingData) ?? new List<CommonModel>();
+            }
+            int maxId = staffList.Any() ? staffList.Max(s => s.Id) : 0;
+            staffData.Id = maxId + 1;
+
+            staffData.Password = this.authentication.GenerateHash(staffData.Password);
+            staffList.Add(staffData);
+
+            var jsonData = JsonSerializer.Serialize(staffList);
+            await File.WriteAllTextAsync(path, jsonData);
+            Trace.WriteLine(path);
+            return new CustomType { Success = true, Message = "Staff registered successfully" };
+        }
+        catch (Exception ex)
+        {
+            Trace.WriteLine("Exception: {0}", ex.Message);
+            return new CustomType { Success = false, Message = ex.Message };
+        }
+    }
 }

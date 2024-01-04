@@ -15,7 +15,7 @@
 @code {
     private string? message = "";
     private string? messageClass = "";
-    AdminModel Model = new AdminModel();
+    CommonModel Model = new CommonModel();
 
     protected override void OnInitialized()
     {
@@ -33,6 +33,7 @@
             {
                 Trace.WriteLine(result);
                 sessionService.SetCurrentUser(true);
+                sessionService.SetCurrentUserType(UserType.Admin);
                 sessionService.NotifyStateChanged();
                 message = result.Message;
                 messageClass = "success-message";

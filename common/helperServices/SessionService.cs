@@ -5,12 +5,18 @@ namespace FinalCoffee1.common.helperServices;
 public class SessionService
 {
 
-    private bool adminRegistered;
+    public UserType CurrentUserType { get; private set; } 
 
     private bool? needAuthorized;
     public event Action OnChange;
     public void NotifyStateChanged() => OnChange?.Invoke();
     private bool currentUser;
+    
+    public void SetCurrentUserType(UserType userType) 
+    {
+        this.CurrentUserType = userType;
+        OnChange?.Invoke();
+    }
 
     public void SetCurrentUser(bool set)
     {

@@ -76,8 +76,8 @@ public class CoffeeService
             {
                 var existingData = await File.ReadAllTextAsync(path);
                 coffeeList = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
-                var coffeeToEdit = coffeeList.FirstOrDefault(c => c.Id == id); // Corrected line
-                Trace.WriteLine("This is CoffeeToEdit: "+coffeeToEdit);
+                var coffeeToEdit = coffeeList.FirstOrDefault(c => c.Id == id); 
+                Trace.WriteLine("This is CoffeeToEdit: " + coffeeToEdit);
                 if (coffeeToEdit != null)
                 {
                     coffeeToEdit.Name = updatedCoffeeData.Name;
@@ -87,10 +87,6 @@ public class CoffeeService
 
                     int index = coffeeList.FindIndex(c => c.Id == id);
                     coffeeList[index] = coffeeToEdit;
-                    foreach (var coffeees in coffeeList)
-                    {
-                        Trace.WriteLine(coffeees);
-                    }
                     var jsonData = JsonSerializer.Serialize(coffeeList);
                     await File.WriteAllTextAsync(path, jsonData);
                     return new CustomType { Success = true, Message = "Updated" };
@@ -99,6 +95,35 @@ public class CoffeeService
                 {
                     return new CustomType { Success = false, Message = "Coffee not found" };
                 }
+            }
+            else
+            {
+                return new CustomType { Success = false, Message = "File not found" };
+            }
+        }
+        catch (Exception error)
+        {
+            return new CustomType { Success = false, Message = error.Message };
+        }
+    }
+    public async Task<CustomType> deleteCoffee(int id)
+    {
+        try
+        {
+            var path = new FileManagement().DirectoryPath("database", "coffee.json");
+            if (File.Exists(path))
+            {
+                var existingData = await File.ReadAllTextAsync(path);
+                coffeeList = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
+                var coffeeToDelete = coffeeList.FirstOrDefault(c => c.Id == id);
+                if (coffeeToDelete != null)
+                {
+                    coffeeList.Remove(coffeeToDelete);
+                    var jsonData = JsonSerializer.Serialize(coffeeList);
+                    await File.WriteAllTextAsync(path, jsonData);
+                    return new CustomType { Success = true, Message = "Deleted" };
+                }
+                return new CustomType { Success = false, Message = "Coffee not found" };
             }
             else
             {

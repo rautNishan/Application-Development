@@ -1,0 +1,55 @@
+@page "/admin/staff/add"
+@namespace FinalCoffee1.Pages.admin
+
+<h3>Add Staff</h3>
+@using FinalCoffee1.Modules.Admin.model
+@using FinalCoffee1.Modules.Admin.service
+@using FinalCoffee1.Pages.admin
+@using FinalCoffee1.common.helperServices
+@using System.Diagnostics
+@inject AdminService adminService;
+@inject NavigationManager navigationManager;
+@inject NotificationService notificationService;
+@inject SessionService sessionService;
+
+<h3>Admin Register</h3>
+
+
+<AdminForm ButtonLabel="Add Staff" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
+
+@code {
+    private string message = "";
+    private string messageClass = "";
+    CommonModel Model = new CommonModel();
+
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            var result = await adminService.addStaff(Model);
+            if (result.Success)
+            {
+                sessionService.setAdminRegistered();
+                message = result.Message;
+                messageClass = "success-message";
+                notificationService.Notify(message, messageClass);
+                navigationManager.NavigateTo("/admin/login");
+
+            }
+            else
+            {
+                message = result.Message;
+                messageClass = "error-message";
+                notificationService.Notify(message, messageClass);
+                navigationManager.NavigateTo("/admin/login");
+
+            }
+        }
+        catch (Exception error)
+        {
+            message = error.Message;
+        }
+
+    }
+
+}

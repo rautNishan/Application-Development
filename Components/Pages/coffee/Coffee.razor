@@ -35,6 +35,7 @@
                     <td>@coffee.Price</td>
                     <td>
                         <button @onclick="() => OpenEditModel(coffee)" class="edit-button">Edit</button>
+                        <button @onclick="()=>deleteCoffee(coffee)" class="delete-button">Delete</button>
                         @if (showEditModel)
                         {
                             <div class="modal" tabindex="-1" role="dialog" style="display:block;">
@@ -55,7 +56,6 @@
                                 </div>
                             </div>
                         }
-                        <button class="delete-button">Delete</button>
                     </td>
                 </tr>
             }
@@ -94,7 +94,7 @@
                     <h5 class="modal-title">Admin Login</h5>
                 </div>
                 <div class="modal-body">
-                    <AdminForm ButtonLabel="Log in" Model="AdminModel" OnSubmit="Login" message="@message"
+                    <AdminForm ButtonLabel="Log in" Model="CommonModel" OnSubmit="Login" message="@message"
                         messageClass="@messageClass"></AdminForm>
                 </div>
                 <div class="modal-footer">
@@ -108,7 +108,7 @@
     private string? message = "";
     private CoffeeModel editCoffeeModel;
     private string? messageClass = "";
-    AdminModel AdminModel = new AdminModel();
+    CommonModel CommonModel = new CommonModel();
     bool isAuthorization = false;
     bool showAddModal = false;
     bool showEditModel = false;
@@ -134,7 +134,19 @@
             return false;
         }
     }
-
+    public async void deleteCoffee(CoffeeModel coffee)
+    {
+        var result = await coffeeService.deleteCoffee(coffee.Id);
+        if (result.Success)
+        {
+            coffeesList.Remove(coffee);
+            StateHasChanged();
+        }
+        else
+        {
+            notificationService.Notify(result.Message, "success-message");
+        }
+    }
     public async void addCoffee()
     {
         var noneedAuth = this.NeedAuthentication();
@@ -147,6 +159,7 @@
             Trace.WriteLine("This is Result: " + notificationService.Message);
             coffeesList = await coffeeService.getCoffeeList();
             sessionService.setNeedAuthorized(false);
+            CloseModal();
             StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
         }
 
@@ -159,6 +172,7 @@
             var result = await coffeeService.editCoffee(coffeeModel.Id, coffeeModel);
             notificationService.Notify(result.Message, "success-message");
             coffeesList = await coffeeService.getCoffeeList();
+            CloseModal();
             StateHasChanged();
         }
     }
@@ -169,7 +183,7 @@
     //This is comment
     public async Task Login()
     {
-        var result = await adminService.Login(AdminModel);
+        var result = await adminService.Login(CommonModel);
         if (result.Success)
         {
             sessionService.setNeedAuthorized(false);

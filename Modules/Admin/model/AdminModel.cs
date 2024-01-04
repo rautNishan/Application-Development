@@ -3,13 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FinalCoffee1.Modules.Admin.model
 {
-    public class AdminModel
+    public class CommonModel
     {
 
+        public int Id { get; set; }
+        public UserType userType { get; set; }
+
         [StringLength(20, MinimumLength = 4, ErrorMessage = "User must be at least 4 characters long")]
-        public  string? Username { get; set; }
+        public string? Username { get; set; }
 
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Password must be at least 6 characters long")]
-        public  string? Password { get; set; }
+        public string? Password { get; set; }
     }
 }
