@@ -1,5 +1,5 @@
 public enum UserType
 {
-    Admin,
-    Staff
+    admin,
+    staff
 }

@@ -2,7 +2,7 @@ using FinalCoffee1.Common.model;
 
 namespace FinalCoffee1.Modules.Staff.model
 {
-    public class StaffModel : CommonModel
+    public class StaffModel : UserModel
     {
 
     }

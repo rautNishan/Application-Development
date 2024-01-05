@@ -9,11 +9,13 @@
 @inject NavigationManager navigationManager;
 @inject NotificationService notificationService;
 @inject SessionService sessionService;
+@inject ActionService actionService;
 
 <h3>Admin Register</h3>
 
 
-<AdminForm ButtonLabel="Register" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
+<AdminForm ButtonLabel="Register" Model="Model" OnSubmit="HandleSubmit" message="@message"
+    messageClass="@messageClass" />
 
 @code {
     private string message = "";
@@ -24,7 +26,7 @@
     {
         try
         {
-            var result = await adminService.Register(Model);
+            var result = await actionService.Register<AdminModel>(Model);
             if (result.Success)
             {
                 sessionService.setAdminRegistered();

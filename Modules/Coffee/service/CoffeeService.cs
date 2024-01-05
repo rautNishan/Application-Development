@@ -65,4 +65,59 @@ public class CoffeeService
         Trace.WriteLine("This is Coffee List: " + this.coffeeList);
         return this.coffeeList;
     }
+
+    public async Task<CustomType> Edit(int id, CoffeeModel model, string fileName)
+    {
+        try
+        {
+            Trace.WriteLine("This is password: " + model.Password);
+            var path = new FileManagement().DirectoryPath("database", fileName);
+            if (File.Exists(path))
+            {
+                var existingData = await File.ReadAllTextAsync(path);
+                var list = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
+                var itemToEdit = list.FirstOrDefault(c => c.Id == id);
+                Trace.WriteLine("This is ItemToEdit: " + itemToEdit);
+                if (itemToEdit != null)
+                {
+                    if (itemToEdit.GetType().GetProperty("Name") != null)
+                    {
+                        itemToEdit.Name = model.Name;
+                    }
+                    if (itemToEdit.GetType().GetProperty("CoffeeType") != null)
+                    {
+                        itemToEdit.CoffeeType = model.CoffeeType;
+                    }
+                    if (itemToEdit.GetType().GetProperty("Size") != null)
+                    {
+                        itemToEdit.Size = model.Size;
+                    }
+                    if (itemToEdit.GetType().GetProperty("Price") != null)
+                    {
+                        itemToEdit.Price = model.Price;
+                    }
+
+
+                    int index = list.FindIndex(c => c.Id == id);
+                    list[index] = itemToEdit;
+                    var jsonData = JsonSerializer.Serialize(list);
+                    await File.WriteAllTextAsync(path, jsonData);
+                    return new CustomType { Success = true, Message = "Updated" };
+                }
+                else
+                {
+                    return new CustomType { Success = false, Message = "Item not found" };
+                }
+            }
+            else
+            {
+                return new CustomType { Success = false, Message = "File not found" };
+            }
+        }
+        catch (Exception error)
+        {
+            return new CustomType { Success = false, Message = error.Message };
+        }
+    }
+
 }

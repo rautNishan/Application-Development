@@ -14,7 +14,7 @@ public class AuthenticationService
         }
     }
 
-    public bool Authenticate(CommonModel existingData, CommonModel comingData)
+    public bool Authenticate(UserModel existingData, UserModel comingData)
     {
         var hashedPassword = this.GenerateHash(comingData.Password);
         if (existingData.Username == comingData.Username && existingData.Password == hashedPassword)

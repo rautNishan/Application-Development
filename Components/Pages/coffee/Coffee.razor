@@ -140,7 +140,7 @@
         var needAuth = await this.NeedAuthentication();
         if (!needAuth)
         {
-            var result = await actionService.Delete<CoffeeModel>(coffee.Id, "coffee.json");
+            var result = await actionService.Delete<BaseModel>(coffee.Id, "coffee.json");
             if (result.Success)
             {
                 coffeesList.Remove(coffee);
@@ -168,7 +168,7 @@
     }
     public async void editCoffee()
     {
-        var result = await actionService.Edit<CoffeeModel>(coffeeModel.Id, coffeeModel, "coffee.json");
+        var result = await coffeeService.Edit(coffeeModel.Id, coffeeModel, "coffee.json");
         notificationService.Notify(result.Message, "success-message");
         coffeesList = await coffeeService.getCoffeeList();
         CloseModal();
@@ -177,7 +177,7 @@
     //This is comment
     public async Task Login()
     {
-        var result = await adminService.Login(Model);
+        var result = await actionService.Login<AdminModel>(Model);
         if (result.Success)
         {
             sessionService.setNeedAuthorized(false);

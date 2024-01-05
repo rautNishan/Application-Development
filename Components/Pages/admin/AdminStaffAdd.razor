@@ -129,7 +129,7 @@
     private async Task AddStaff()
     {
 
-        var result = await adminService.addStaff(staffModel);
+        var result = await actionService.Register<StaffModel>(staffModel);
         notificationService.Notify(result.Message, "success-message");
         notificationService.Clear();
         staffList = await adminService.getStaffList();
@@ -139,7 +139,7 @@
     }
     public async void editStaff()
     {
-        var result = await actionService.Edit<StaffModel>(staffModel.Id, staffModel, "staff.json");
+        var result = await adminService.Edit(staffModel.Id, staffModel, "staff.json");
         notificationService.Notify(result.Message, "success-message");
         staffList = await adminService.getStaffList();
         CloseModal();
@@ -151,7 +151,7 @@
         var noneedAuth = await this.NeedAuthentication();
         if (!noneedAuth)
         {
-            var result = await actionService.Delete<StaffModel>(staff.Id, "staff.json");
+            var result = await actionService.Delete<BaseModel>(staff.Id, "staff.json");
             if (result.Success)
             {
                 staffList.Remove(staff);
@@ -166,7 +166,7 @@
     }
     public async Task Login()
     {
-        var result = await adminService.Login(adminModel);
+        var result = await actionService.Login<AdminModel>(adminModel);
         if (result.Success)
         {
             sessionService.setNeedAuthorized(false);
@@ -200,10 +200,6 @@
 
     }
 
-    @* public void authorized()
-{
-isAuthorization = false;
-} *@
 
     public void CloseModal()
     {

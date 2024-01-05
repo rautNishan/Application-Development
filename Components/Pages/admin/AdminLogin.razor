@@ -2,6 +2,7 @@
 @namespace FinalCoffee1.Pages.admin
 @using FinalCoffee1.Modules.Admin.model
 @using FinalCoffee1.Modules.Admin.service;
+@using FinalCoffee1.Common.model;
 @using FinalCoffee1.common.helperServices;
 @inject NavigationManager navigationManager
 @inject AdminService adminService;
@@ -10,6 +11,7 @@
 @using Microsoft.Extensions.Logging
 @using System.Diagnostics
 @inject SessionService sessionService;
+@inject ActionService actionService;
 <h3>Admin Login</h3>
 <AdminForm ButtonLabel="Log in" Model="Model" OnSubmit="HandleSubmit" message="@message" messageClass="@messageClass" />
 @code {
@@ -28,12 +30,19 @@
         try
         {
             Trace.WriteLine("This is Login");
-            var result = await adminService.Login(Model);
+            var result = await actionService.Login<AdminModel>(Model);
             if (result.Success)
             {
+                if (Model.userType == UserType.admin)
+                {
+                    sessionService.SetCurrentUserType(UserType.admin);
+                }
+                else if (Model.userType == UserType.staff)
+                {
+                    sessionService.SetCurrentUserType(UserType.staff);
+                }
                 Trace.WriteLine(result);
                 sessionService.SetCurrentUser(true);
-                sessionService.SetCurrentUserType(UserType.Admin);
                 sessionService.NotifyStateChanged();
                 message = result.Message;
                 messageClass = "success-message";
