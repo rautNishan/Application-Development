@@ -1,0 +1,120 @@
+@page "/staff/orderCoffee";
+@namespace FinalCoffee1.Pages.staff
+@using FinalCoffee1.Modules.Coffee.model;
+@using FinalCoffee1.Modules.Admin.model;
+@using FinalCoffee1.Modules.Admin.service;
+@using FinalCoffee1.common.helperServices;
+@using FinalCoffee1.Modules.Coffee.service;
+@using FinalCoffee1.Pages.coffee;
+@using FinalCoffee1.Pages.admin;
+@using System.Diagnostics
+@using FinalCoffee1.Modules.Staff.service;
+@inject AdminService adminService;
+@inject NotificationService notificationService;
+@inject SessionService sessionService;
+@inject CoffeeService coffeeService;
+@inject ActionService actionService;
+@inject StaffService staffService;
+<h3>Menue</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>CoffeeType</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (coffeeList != null && coffeeList.Count > 0)
+        {
+            @foreach (var coffee in coffeeList)
+            {
+                <tr>
+                    <td>@coffee.Name</td>
+                    <td>@coffee.CoffeeType</td>
+                    <td>@coffee.Size</td>
+                    <td>@coffee.Price</td>
+                    <td>
+                        <button @onclick="()=>AddToCart(coffee)" class="edit-button">Add to Cart</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<h3>Cart</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>CoffeeType</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (orderList != null && orderList.Count > 0)
+        {
+            for (int i = 0; i < orderList.Count; i++)
+            {
+                var orderedCoffee = orderList[i];
+                <tr>
+                    <td>@orderedCoffee.Name</td>
+                    <td>@orderedCoffee.CoffeeType</td>
+                    <td>@orderedCoffee.Size</td>
+                    <td>@orderedCoffee.Price</td>
+                    <td>
+                        <button @onclick="()=>RemoveFromCart(orderedCoffee)" class="delete-button">Remove</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<button @onclick="()=>Order(orderList)" class="edit-button">Order Coffee</button>
+
+@code {
+
+    List<CoffeeModel>? coffeeList = new List<CoffeeModel>();
+
+    List<CoffeeModel> orderList = new List<CoffeeModel>();
+    protected async override void OnInitialized()
+    {
+        notificationService.Clear();
+    }
+    protected async override Task OnParametersSetAsync()
+    {
+        coffeeList = await coffeeService.getCoffeeList();
+        orderList = await staffService.getOrderedCoffee();
+
+    }
+
+    protected async void AddToCart(CoffeeModel coffee)
+    {
+        Trace.WriteLine("AddToCart");
+        coffee.index = orderList.Count;
+        staffService.setOrderedList(coffee);
+        orderList = await staffService.getOrderedCoffee();
+        foreach (var item in orderList)
+        {
+            Trace.WriteLine(item.Name);
+        }
+    }
+
+    protected async void RemoveFromCart(CoffeeModel orderedCoffee)
+    {
+        orderList = await staffService.removeOrderList(orderedCoffee.index);
+    }
+
+    protected async void AddAddings(List<CoffeeModel> cartList)
+    {
+        @* await staffService.AddAddings(cartList); *@
+    }
+    protected async void Order(List<CoffeeModel> orderList)
+    {
+        await staffService.TakeOrder(orderList);
+    }
+}

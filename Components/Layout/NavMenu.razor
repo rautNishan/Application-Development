@@ -53,6 +53,13 @@
                 </NavLink>
             </div>
         }
+        @if (sessionService.IsUserLoggedIn() && sessionService.CurrentUserType == UserType.staff){
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/staff/orderCoffee">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Take Order
+                </NavLink>
+            </div> 
+        }
         @if(sessionService.IsUserLoggedIn()){
               <div class="nav-item px-3">
                 <NavLink class="nav-link" href="/admin/logout">

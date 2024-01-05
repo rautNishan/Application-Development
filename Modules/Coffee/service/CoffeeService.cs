@@ -70,7 +70,6 @@ public class CoffeeService
     {
         try
         {
-            Trace.WriteLine("This is password: " + model.Password);
             var path = new FileManagement().DirectoryPath("database", fileName);
             if (File.Exists(path))
             {

@@ -1,18 +1,19 @@
 using System.Diagnostics;
 using FinalCoffee1.common.helperClass;
+using FinalCoffee1.Modules.Coffee.model;
 
 namespace FinalCoffee1.common.helperServices;
 public class SessionService
 {
 
-    public UserType CurrentUserType { get; private set; } 
+    public UserType CurrentUserType { get; private set; }
 
     private bool? needAuthorized;
     public event Action OnChange;
     public void NotifyStateChanged() => OnChange?.Invoke();
     private bool currentUser;
-    
-    public void SetCurrentUserType(UserType userType) 
+
+    public void SetCurrentUserType(UserType userType)
     {
         this.CurrentUserType = userType;
         OnChange?.Invoke();
