@@ -113,15 +113,16 @@
     bool isAuthorization = false;
     bool showAddModal = false;
     bool showEditModel = false;
-    CoffeeModel coffeeModel = new CoffeeModel();
-    List<CoffeeModel>? coffeesList = new List<CoffeeModel>();
+    CommonModel coffeeModel = new CommonModel();
+    List<CommonModel>? coffeesList = new List<CommonModel>();
     protected async override void OnInitialized()
     {
         notificationService.Clear();
     }
     protected async override Task OnParametersSetAsync()
     {
-        coffeesList = await coffeeService.getCoffeeList();
+        sessionService.setOnlyCoffee(true);
+        coffeesList = await coffeeService.getList("coffee.json");
     }
     public async Task<bool> NeedAuthentication()
     {
@@ -135,7 +136,7 @@
             return false;
         }
     }
-    public async void deleteCoffee(CoffeeModel coffee)
+    public async void deleteCoffee(CommonModel coffee)
     {
         var needAuth = await this.NeedAuthentication();
         if (!needAuth)
@@ -156,11 +157,11 @@
     public async void addCoffee()
     {
         Trace.WriteLine("Now You Can Add Coffee");
-        var result = await coffeeService.addCoffee(coffeeModel);
+        var result = await coffeeService.addCoffee(coffeeModel, "coffee.json");
         notificationService.Notify(result.Message, "success-message");
         notificationService.Clear();
         Trace.WriteLine("This is Result: " + notificationService.Message);
-        coffeesList = await coffeeService.getCoffeeList();
+        coffeesList = await coffeeService.getList("coffee.json");
         sessionService.setNeedAuthorized(false);
         CloseModal();
         StateHasChanged(); //Because UI is not able to fetch coffee so we need to make it sure it will fetch the added coffees.
@@ -170,7 +171,7 @@
     {
         var result = await coffeeService.Edit(coffeeModel.Id, coffeeModel, "coffee.json");
         notificationService.Notify(result.Message, "success-message");
-        coffeesList = await coffeeService.getCoffeeList();
+        coffeesList = await coffeeService.getList("coffee.json");
         CloseModal();
         StateHasChanged();
     }
@@ -200,7 +201,7 @@
         }
 
     }
-    public async void OpenEditModel(CoffeeModel coffee)
+    public async void OpenEditModel(CommonModel coffee)
     {
         var result = await this.NeedAuthentication();
         if (!result)

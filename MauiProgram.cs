@@ -3,7 +3,6 @@ using FinalCoffee1.common.helperServices;
 using Microsoft.Extensions.Logging;
 using FinalCoffee1.Modules.Coffee.service;
 using FinalCoffee1.Modules.Staff.service;
-
 namespace FinalCoffee1
 {
     public static class MauiProgram

@@ -7,29 +7,31 @@ namespace FinalCoffee1.Modules.Coffee.service;
 
 public class CoffeeService
 {
-    List<CoffeeModel> coffeeList;
+    List<CommonModel> coffeeList;
+    List<CommonModel> addingList;
     int count = 0;
-    public async Task<CustomType> addCoffee(CoffeeModel coffeeData)
+    public async Task<CustomType> addCoffee(CommonModel Data, string fileName)
     {
         try
         {
+
             Trace.WriteLine("Calling Add Coffee");
-            var path = new FileManagement().DirectoryPath("database", "coffee.json");
+            var path = new FileManagement().DirectoryPath("database", fileName);
             Trace.WriteLine("This is Path: " + path);
             if (!File.Exists(path))
             {
                 Trace.WriteLine("This is Existing Data: " + "No Data");
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
-                coffeeData.Id = 1;
-                coffeeList = new List<CoffeeModel> { coffeeData };
+                Data.Id = 1;
+                coffeeList = new List<CommonModel> { Data };
             }
             else
             {
                 var existingData = await File.ReadAllTextAsync(path);
                 Trace.WriteLine("This is Existing Data: " + existingData);
-                coffeeList = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
-                coffeeData.Id = coffeeList.Count + 1;
-                coffeeList.Add(coffeeData);
+                coffeeList = JsonSerializer.Deserialize<List<CommonModel>>(existingData) ?? new List<CommonModel>();
+                Data.Id = coffeeList.Count + 1;
+                coffeeList.Add(Data);
             }
             var jsonData = JsonSerializer.Serialize(coffeeList);
             await File.WriteAllTextAsync(path, jsonData);
@@ -40,33 +42,53 @@ public class CoffeeService
             return new CustomType { Success = false, Message = error.Message };
         }
     }
-
-    public async Task readCoffee()
+    public async Task readData(string fileName)
     {
         try
         {
-            var path = new FileManagement().DirectoryPath("database", "coffee.json");
+            Trace.WriteLine("Calling Read Data" + fileName);
+            var path = new FileManagement().DirectoryPath("database", fileName);
             if (File.Exists(path))
             {
                 var existingData = await File.ReadAllTextAsync(path);
                 Trace.WriteLine("This is Existing Data: " + existingData);
-                coffeeList = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
+                var dataList = JsonSerializer.Deserialize<List<CommonModel>>(existingData) ?? new List<CommonModel>();
+
+                if (fileName == "addins.json")
+                {
+                    addingList = dataList;
+                }
+                else if (fileName == "coffee.json")
+                {
+                    coffeeList = dataList;
+                }
             }
         }
         catch (Exception error)
         {
             Trace.WriteLine("This is Error: " + error.Message);
         }
-
     }
-    public async Task<List<CoffeeModel>> getCoffeeList()
+    public async Task<List<CommonModel>> getList(string fileName)
     {
-        await this.readCoffee();
-        Trace.WriteLine("This is Coffee List: " + this.coffeeList);
-        return this.coffeeList;
+        await this.readData(fileName);
+        if (fileName == "addins.json")
+        {
+            Trace.WriteLine("This is Adding List: " + this.addingList);
+            return this.addingList;
+        }
+        else if (fileName == "coffee.json")
+        {
+            Trace.WriteLine("This is Coffee List: " + this.coffeeList);
+            return this.coffeeList;
+        }
+        else
+        {
+            return new List<CommonModel>();
+        }
     }
 
-    public async Task<CustomType> Edit(int id, CoffeeModel model, string fileName)
+    public async Task<CustomType> Edit(int id, CommonModel model, string fileName)
     {
         try
         {
@@ -74,7 +96,7 @@ public class CoffeeService
             if (File.Exists(path))
             {
                 var existingData = await File.ReadAllTextAsync(path);
-                var list = JsonSerializer.Deserialize<List<CoffeeModel>>(existingData) ?? new List<CoffeeModel>();
+                var list = JsonSerializer.Deserialize<List<CommonModel>>(existingData) ?? new List<CommonModel>();
                 var itemToEdit = list.FirstOrDefault(c => c.Id == id);
                 Trace.WriteLine("This is ItemToEdit: " + itemToEdit);
                 if (itemToEdit != null)

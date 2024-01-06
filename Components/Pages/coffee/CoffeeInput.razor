@@ -1,27 +1,32 @@
-@namespace FinalCoffee1.Pages.coffee
 @using FinalCoffee1.Modules.Coffee.model
+@using FinalCoffee1.common.helperServices;
+@inject SessionService sessionService;
+@namespace FinalCoffee1.Pages.coffee
 <EditForm Model="@Model" OnValidSubmit="OnSubmit">
     <div class="form-group">
         <p class="@messageClass">@message</p>
-        <label for="coffeeName" class="col-sm-2 col-form-label whitespace-nowrap">Coffee Name:</label>
+        <label for="coffeeName" class="col-sm-2 col-form-label whitespace-nowrap">Name:</label>
         <div class="col-sm-12">
             <input type="text" id="coffeeName" class="form-control" required @bind="Model.Name" />
         </div>
     </div>
-    <div class="form-group">
-        <label for="coffeeType" class="col-sm-2 col-form-label">Coffee Type:</label>
-        <div class="col-sm-12">
-            <input type="text" id="coffeeType" class="form-control" required @bind="Model.CoffeeType" />
+    @if (sessionService.getOnlyCoffee())
+    {
+        <div class="form-group">
+            <label for="coffeeType" class="col-sm-2 col-form-label">Type:</label>
+            <div class="col-sm-12">
+                <input type="text" id="coffeeType" class="form-control" required @bind="Model.CoffeeType" />
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label for="coffeeSize" class="col-sm-2 col-form-label">Coffee Size:</label>
-        <div class="col-sm-12">
-            <input type="text" id="coffeeSize" class="form-control" required @bind="Model.Size" />
+        <div class="form-group">
+            <label for="coffeeSize" class="col-sm-2 col-form-label">Size:</label>
+            <div class="col-sm-12">
+                <input type="text" id="coffeeSize" class="form-control" required @bind="Model.Size" />
+            </div>
         </div>
-    </div>
+    }
     <div class="form-group">
-        <label for="coffeePrice" class="col-sm-2 col-form-label">Coffee Price:</label>
+        <label for="coffeePrice" class="col-sm-2 col-form-label">Price:</label>
         <div class="col-sm-12">
             <input type="number" id="coffeePrice" class="form-control" required @bind="Model.Price" />
         </div>
@@ -32,7 +37,7 @@
     [Parameter]
     public EventCallback OnSubmit { get; set; }
     [Parameter]
-    public CoffeeModel? Model { get; set; }
+    public CommonModel? Model { get; set; }
     [Parameter]
     public string? ButtonLabel { get; set; }
     [Parameter]

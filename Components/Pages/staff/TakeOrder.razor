@@ -78,21 +78,21 @@
 
 @code {
 
-    List<CoffeeModel>? coffeeList = new List<CoffeeModel>();
+    List<CommonModel>? coffeeList = new List<CommonModel>();
 
-    List<CoffeeModel> orderList = new List<CoffeeModel>();
+    List<CommonModel> orderList = new List<CommonModel>();
     protected async override void OnInitialized()
     {
         notificationService.Clear();
     }
     protected async override Task OnParametersSetAsync()
     {
-        coffeeList = await coffeeService.getCoffeeList();
+        coffeeList = await coffeeService.getList("coffee.json");
         orderList = await staffService.getOrderedCoffee();
 
     }
 
-    protected async void AddToCart(CoffeeModel coffee)
+    protected async void AddToCart(CommonModel coffee)
     {
         Trace.WriteLine("AddToCart");
         coffee.index = orderList.Count;
@@ -104,16 +104,16 @@
         }
     }
 
-    protected async void RemoveFromCart(CoffeeModel orderedCoffee)
+    protected async void RemoveFromCart(CommonModel orderedCoffee)
     {
         orderList = await staffService.removeOrderList(orderedCoffee.index);
     }
 
-    protected async void AddAddings(List<CoffeeModel> cartList)
+    protected async void AddAddings(List<CommonModel> cartList)
     {
         @* await staffService.AddAddings(cartList); *@
     }
-    protected async void Order(List<CoffeeModel> orderList)
+    protected async void Order(List<CommonModel> orderList)
     {
         await staffService.TakeOrder(orderList);
     }

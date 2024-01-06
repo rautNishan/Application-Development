@@ -1,6 +1,5 @@
-using System.Diagnostics;
+
 using FinalCoffee1.common.helperClass;
-using FinalCoffee1.Modules.Coffee.model;
 
 namespace FinalCoffee1.common.helperServices;
 public class SessionService
@@ -63,5 +62,16 @@ public class SessionService
             this.needAuthorized = true;
             return (bool)this.needAuthorized;
         }
+    }
+    private bool isOnlyCoffee=false;
+    public bool setOnlyCoffee(bool set)
+    {
+        this.isOnlyCoffee = set;
+        OnChange?.Invoke();
+        return this.isOnlyCoffee;
+    }
+    public bool getOnlyCoffee()
+    {
+        return this.isOnlyCoffee;
     }
 }
