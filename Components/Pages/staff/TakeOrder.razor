@@ -250,6 +250,8 @@ public decimal CalculateTotalPrice()
     protected async void Order(List<CommonModel> orderList,string Email, decimal totalPrice)
     {
         await staffService.TakeOrder(orderList, Email, totalPrice);
+        await staffService.clearOrderList();
+        StateHasChanged();
     }
 
     public void OpenAddModal()

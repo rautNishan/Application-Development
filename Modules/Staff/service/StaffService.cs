@@ -67,11 +67,11 @@ public class StaffService
         return this.coffeeList;
     }
 
-    // public async Task<CustomType> clearOrderList()
-    // {
-    //     this.coffeeList.Clear();
-    //     return new CustomType { Success = true, Message = "Success" };
-    // }
+    public async Task<CustomType> clearOrderList()
+    {
+        this.coffeeList.Clear();
+        return new CustomType { Success = true, Message = "Success" };
+    }
 
     public async Task<CustomType> isUserRegistered(string email)
     {
