@@ -133,7 +133,12 @@
       <p style="text-align: center;">Total price: @CalculateTotalPrice()</p>
     </tbody>
 </table>
-<button @onclick="OpenMemberModel" class="edit-button">Order Coffee</button>
+@if(!isMember){
+<button @onclick="OpenMemberModel" class="edit-button">Check Member</button>
+}
+@if(isMember){
+     <button @onclick="Order" class="edit-button">Order Coffee</button>
+}
 @if (showMemberModel)
 {
     <div class="modal" tabindex="-1" role="dialog" style="display:block;">
@@ -160,6 +165,8 @@
     List<CommonModel>? coffeeList = new List<CommonModel>();
     bool showMemberModel = false;
     bool showAddModal = false;
+    bool isMember=false;
+    string email="";
     List<CommonModel> orderList = new List<CommonModel>();
     List<CommonModel>? addingLists = new List<CommonModel>();
     UserModel CustomerModel = new UserModel();
@@ -235,7 +242,10 @@ public decimal CalculateTotalPrice()
             if(result.Success)
             {
                 decimal totalPrice=this.CalculateTotalPrice();
-                Order(orderList,user.Email,totalPrice);
+                @* Order(orderList,user.Email,totalPrice); *@
+                isMember=true;
+                email=user.Email;
+                StateHasChanged();
                 this.message=result.Message;
                 this.messageClass = "success-message";
             }
@@ -247,9 +257,10 @@ public decimal CalculateTotalPrice()
             }
             StateHasChanged();
         }
-    protected async void Order(List<CommonModel> orderList,string Email, decimal totalPrice)
+    protected async void Order()
     {
-        await staffService.TakeOrder(orderList, Email, totalPrice);
+        decimal totalPrice=this.CalculateTotalPrice();
+        await staffService.TakeOrder(orderList, email, totalPrice);
         await staffService.clearOrderList();
         StateHasChanged();
     }
