@@ -7,6 +7,7 @@
 @using FinalCoffee1.Modules.Coffee.service;
 @using FinalCoffee1.Pages.coffee;
 @using FinalCoffee1.Pages.admin;
+@using FinalCoffee1.Common.model;
 @using System.Diagnostics
 @using FinalCoffee1.Modules.Staff.service;
 @inject AdminService adminService;
@@ -15,6 +16,7 @@
 @inject CoffeeService coffeeService;
 @inject ActionService actionService;
 @inject StaffService staffService;
+
 <h3>Menue</h3>
 <table>
     <thead>
@@ -45,6 +47,7 @@
     </tbody>
 </table>
 <h3>Cart</h3>
+<p class="@messageClass">@this.message</p>
 <table>
     <thead>
         <tr>
@@ -52,6 +55,7 @@
             <th>CoffeeType</th>
             <th>Size</th>
             <th>Price</th>
+            <th>Add-ins</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -66,21 +70,99 @@
                     <td>@orderedCoffee.CoffeeType</td>
                     <td>@orderedCoffee.Size</td>
                     <td>@orderedCoffee.Price</td>
+                     @if(orderedCoffee.AddIns != null && orderedCoffee.AddIns.Count > 0){
+                            <td>
+                            @foreach (var addin in orderedCoffee.AddIns)
+                            {
+                                @addin.Name<br />
+                            }
+                        </td>
+                        }
+                        else{
+                            <td>
+                                No Add-ins
+                            </td>
+                        }
                     <td>
                         <button @onclick="()=>RemoveFromCart(orderedCoffee)" class="delete-button">Remove</button>
+                        <button type="button" class="btn btn-primary" @onclick="OpenAddModal">Add Addings</button>
+                        @if (showAddModal)
+                        {
+                            <div class="modal" tabindex="-1" role="dialog" style="display:block;">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Add Add-ins</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Price</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (addingLists != null && addingLists.Count > 0)
+                                                    {
+                                                        for (int j = 0; j < addingLists.Count; j++)
+                                                        {
+                                                            var addins = addingLists[j];
+                                                            <tr>
+                                                                <td>@addins.Name</td>
+                                                                <td>@addins.Price</td>
+                                                                <td><button @onclick="()=>AddAddings(addins,orderedCoffee)" class="btn btn-secondary">Add</button></td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     </td>
                 </tr>
             }
         }
+      <p style="text-align: center;">Total price: @CalculateTotalPrice()</p>
     </tbody>
 </table>
-<button @onclick="()=>Order(orderList)" class="edit-button">Order Coffee</button>
+<button @onclick="OpenMemberModel" class="edit-button">Order Coffee</button>
+@if (showMemberModel)
+{
+    <div class="modal" tabindex="-1" role="dialog" style="display:block;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Staff</h5>
+                </div>
+                <div class="modal-body">
+                    <input type="email" @bind="CustomerModel.Email" placeholder="Enter email" />
+                </div>
+                <button type="button" class="edit-button" @onclick="()=>CheckUserExist(CustomerModel)">Order</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 @code {
-
+    string message = "";
+    string messageClass="";
     List<CommonModel>? coffeeList = new List<CommonModel>();
-
+    bool showMemberModel = false;
+    bool showAddModal = false;
     List<CommonModel> orderList = new List<CommonModel>();
+    List<CommonModel>? addingLists = new List<CommonModel>();
+    UserModel CustomerModel = new UserModel();
     protected async override void OnInitialized()
     {
         notificationService.Clear();
@@ -89,32 +171,98 @@
     {
         coffeeList = await coffeeService.getList("coffee.json");
         orderList = await staffService.getOrderedCoffee();
-
+        addingLists = await coffeeService.getList("addins.json");
+        Trace.WriteLine("This is Addings count: " + addingLists.Count);
     }
 
     protected async void AddToCart(CommonModel coffee)
+            {
+                Trace.WriteLine("AddToCart");
+                var coffeeCopy = new CommonModel
+                {
+                    Name = coffee.Name,
+                    CoffeeType = coffee.CoffeeType,
+                    Size = coffee.Size,
+                    Price = coffee.Price,
+                    index = orderList.Count
+                };
+                Trace.WriteLine("This is index: " + coffeeCopy.index);
+                staffService.setOrderedList(coffeeCopy);
+                orderList = await staffService.getOrderedCoffee();
+                foreach (var item in orderList)
+                {
+                    Trace.WriteLine(item.Name);
+                }
+            }
+public decimal CalculateTotalPrice()
+{
+    decimal totalPrice = 0;
+
+    foreach (var coffee in orderList)
     {
-        Trace.WriteLine("AddToCart");
-        coffee.index = orderList.Count;
-        staffService.setOrderedList(coffee);
-        orderList = await staffService.getOrderedCoffee();
-        foreach (var item in orderList)
+        totalPrice += coffee.Price;
+
+        if (coffee.AddIns != null)
         {
-            Trace.WriteLine(item.Name);
+            foreach (var addin in coffee.AddIns)
+            {
+                totalPrice += addin.Price;
+            }
         }
     }
 
+    return totalPrice;
+}
     protected async void RemoveFromCart(CommonModel orderedCoffee)
     {
         orderList = await staffService.removeOrderList(orderedCoffee.index);
     }
 
-    protected async void AddAddings(List<CommonModel> cartList)
+    protected void AddAddings(CommonModel addings,CommonModel coffee)
     {
-        @* await staffService.AddAddings(cartList); *@
+        Trace.WriteLine("AddAddings: "+addings.index);
+        orderList[coffee.index].AddIns.Add(addings);
+        foreach (var item in orderList[coffee.index].AddIns)
+        {
+            Trace.WriteLine("This is Item: "+item);
+        }
+        CloseModal();
     }
-    protected async void Order(List<CommonModel> orderList)
+        protected async void CheckUserExist(UserModel user)
+        {
+            CloseModal();
+            var result = await staffService.isUserRegistered(user.Email);
+            if(result.Success)
+            {
+                decimal totalPrice=this.CalculateTotalPrice();
+                Order(orderList,user.Email,totalPrice);
+                this.message=result.Message;
+                this.messageClass = "success-message";
+            }
+            else
+            {
+                this.message=result.Message;
+                this.messageClass = "fail-message";
+
+            }
+            StateHasChanged();
+        }
+    protected async void Order(List<CommonModel> orderList,string Email, decimal totalPrice)
     {
-        await staffService.TakeOrder(orderList);
+        await staffService.TakeOrder(orderList, Email, totalPrice);
+    }
+
+    public void OpenAddModal()
+    {
+        showAddModal = true;
+    }
+     public void OpenMemberModel()
+    {
+        showMemberModel = true;
+    }
+    public void CloseModal()
+    {
+        showAddModal = false;
+        showMemberModel=false;
     }
 }

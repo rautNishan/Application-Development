@@ -16,7 +16,7 @@ public class ActionService
     {
         try
         {
-            string savePath = data.userType == UserType.admin ? "admin.json" : "staff.json";
+            string savePath = data.userType == null ? "user.json" : (data.userType == UserType.admin ? "admin.json" : "staff.json");
             var path = new FileManagement().DirectoryPath("database", savePath);
             Trace.WriteLine("This is Path: " + path);
             Directory.CreateDirectory(Path.GetDirectoryName(path));
@@ -29,8 +29,10 @@ public class ActionService
             }
             int maxId = userList.Any() ? userList.Max(s => s.Id) : 0;
             data.Id = maxId + 1;
-
-            data.Password = this.authentication.GenerateHash(data.Password);
+            if (data.Password != null)
+            {
+                data.Password = this.authentication.GenerateHash(data.Password);
+            }
             Trace.WriteLine("This is PASSWORD: ", data.Password);
             userList.Add(data);
 

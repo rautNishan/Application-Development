@@ -28,3 +28,15 @@ tr {
     color: white;
     border: none;
 }
+
+.fail-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success-message{
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}

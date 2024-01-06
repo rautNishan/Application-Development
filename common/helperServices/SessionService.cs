@@ -64,14 +64,24 @@ public class SessionService
         }
     }
     private bool isOnlyCoffee=false;
-    public bool setOnlyCoffee(bool set)
+    public void setOnlyCoffee(bool set)
     {
         this.isOnlyCoffee = set;
         OnChange?.Invoke();
-        return this.isOnlyCoffee;
     }
     public bool getOnlyCoffee()
     {
         return this.isOnlyCoffee;
+    }
+
+    private bool isOnlyCustomer=false;
+    public void setCustomerOnly(bool set)
+    {
+        this.isOnlyCustomer = set;
+        OnChange?.Invoke();
+    }
+    public bool getCustomerOnly()
+    {
+        return this.isOnlyCustomer;
     }
 }

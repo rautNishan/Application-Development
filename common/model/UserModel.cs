@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 namespace FinalCoffee1.Common.model;
-public class UserModel:BaseModel
+public class UserModel : BaseModel
 {
     public UserType? userType { get; set; }
 
@@ -9,4 +9,7 @@ public class UserModel:BaseModel
 
     [StringLength(20, MinimumLength = 4, ErrorMessage = "Password must be at least 6 characters long")]
     public string? Password { get; set; }
+
+    [EmailAddress(ErrorMessage = "Invalid Email Address")]
+    public string? Email { get; set; }
 }
