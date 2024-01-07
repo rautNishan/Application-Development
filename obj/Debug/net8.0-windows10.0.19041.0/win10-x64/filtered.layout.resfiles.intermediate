@@ -2,7 +2,7 @@ Components\Layout\MainLayout.razor.css
 Components\Layout\NavMenu.razor.css
 database\addins.json
 database\admin.json
-database\coffee.json
+database\orderData.json
 database\staff.json
 database\user.json
 OpenSans-Regular.ttf

@@ -101,7 +101,8 @@ public class ActionService
                 var existingData = await File.ReadAllTextAsync(path);
                 var list = JsonSerializer.Deserialize<List<T>>(existingData) ?? new List<T>();
                 var itemToDelete = list.FirstOrDefault(c => c.Id == id);
-                Trace.WriteLine(itemToDelete);
+                Trace.WriteLine("This is ItemtoDelete: " + itemToDelete);
+                Trace.WriteLine(itemToDelete.Id);
                 if (itemToDelete != null)
                 {
                     list.Remove(itemToDelete);

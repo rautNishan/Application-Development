@@ -130,7 +130,7 @@
                 </tr>
             }
         }
-      <p style="text-align: center;">Total price: @CalculateTotalPrice(null,free)</p>
+      <p style="text-align: center;">Total price: @CalculateTotalPrice(0,free)</p>
     </tbody>
 </table>
 @if(!isMember){
@@ -161,7 +161,7 @@
 
 @code {
     string message = "";
-    int? discount=null;
+    decimal discount=0;
     bool free=false;
     string messageClass="";
     List<CommonModel>? coffeeList = new List<CommonModel>();
@@ -203,7 +203,7 @@
                     Trace.WriteLine(item.Name);
                 }
             }
-public decimal CalculateTotalPrice(int? discount, bool free)
+public decimal CalculateTotalPrice(decimal discount, bool free)
 {
     decimal totalPrice = 0;
       if(free){
@@ -221,7 +221,8 @@ public decimal CalculateTotalPrice(int? discount, bool free)
             }
         }
     }
-    
+    Trace.WriteLine("This is discount: "+discount);
+    totalPrice=totalPrice-(totalPrice*discount/100);
     return totalPrice;
 }
     protected async void RemoveFromCart(CommonModel orderedCoffee)
