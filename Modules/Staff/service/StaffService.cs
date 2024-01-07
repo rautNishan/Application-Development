@@ -94,5 +94,25 @@ public class StaffService
         return new CustomType { Success = false, Message = "User Not Found" };
     }
 
-    
+    public async Task<int> getDiscount(string email)
+    {
+        var path = new FileManagement().DirectoryPath("database", "orderData.json");
+        List<OrderModel> orderList = new List<OrderModel>();
+        if (File.Exists(path))
+        {
+            var existingData = await File.ReadAllTextAsync(path);
+            orderList = JsonSerializer.Deserialize<List<OrderModel>>(existingData) ?? new List<OrderModel>();
+            foreach (var user in orderList)
+            {
+                if (user.Email == email)
+                {
+                    Trace.WriteLine("This is Email: " + user.Email);
+                    return user.CoffeeData.Count;
+                }
+            }
+            return 0;
+        }
+        return 0;
+    }
+
 }
