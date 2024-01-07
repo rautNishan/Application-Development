@@ -29,7 +29,8 @@ public class StaffService
             {
                 Email = Email,
                 TotalPrice = totalPrice,
-                CoffeeData = coffeeData
+                CoffeeData = coffeeData,
+                Date = DateTime.Now
             };
 
             existingOrderData.Add(newOrderData);
