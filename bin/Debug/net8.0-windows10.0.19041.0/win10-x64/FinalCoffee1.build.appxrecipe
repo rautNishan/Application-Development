@@ -241,9 +241,6 @@
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\coffee.json">
       <PackagePath>database\coffee.json</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\orderData.json">
-      <PackagePath>database\orderData.json</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\database\staff.json">
       <PackagePath>database\staff.json</PackagePath>
     </AppxPackagedFile>

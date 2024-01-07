@@ -10,10 +10,12 @@ namespace FinalCoffee1.Modules.Staff.service;
 public class StaffService
 {
 
-    public async Task<CustomType> TakeOrder(List<CommonModel> coffeeData, string Email, decimal totalPrice)
+    int orderCount = 0;
+    public async Task<CustomType> TakeOrder(List<CommonModel> coffeeData, string Email, decimal totalPrice,bool free)
     {
         try
         {
+
             var path = new FileManagement().DirectoryPath("database", "orderData.json");
             Trace.WriteLine("This is Path: " + path);
             Directory.CreateDirectory(Path.GetDirectoryName(path));
@@ -24,15 +26,25 @@ public class StaffService
                 var existingJson = await File.ReadAllTextAsync(path);
                 existingOrderData = JsonSerializer.Deserialize<List<OrderModel>>(existingJson) ?? new List<OrderModel>();
             }
-
+            for(int i = 0; i < existingOrderData.Count; i++)
+            {
+                if(existingOrderData[i].Email == Email)
+                {
+                    orderCount= existingOrderData[i].Count;
+                }
+            }
             var newOrderData = new OrderModel
             {
                 Email = Email,
                 TotalPrice = totalPrice,
                 CoffeeData = coffeeData,
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                Count = orderCount+1
             };
-
+             if(free)
+            {
+                newOrderData.Count=1;
+            }
             existingOrderData.Add(newOrderData);
 
             var jsonData = JsonSerializer.Serialize(existingOrderData);
@@ -94,25 +106,31 @@ public class StaffService
         return new CustomType { Success = false, Message = "User Not Found" };
     }
 
-    public async Task<int> getDiscount(string email)
+    
+    public async Task<bool> getIsFree(string email)
     {
         var path = new FileManagement().DirectoryPath("database", "orderData.json");
+        int count=0;
         List<OrderModel> orderList = new List<OrderModel>();
         if (File.Exists(path))
         {
             var existingData = await File.ReadAllTextAsync(path);
             orderList = JsonSerializer.Deserialize<List<OrderModel>>(existingData) ?? new List<OrderModel>();
-            foreach (var user in orderList)
+            Trace.WriteLine("This is Order Count: " + orderList.Count());
+            for (int i = 0; i < orderList.Count(); i++)
             {
-                if (user.Email == email)
+                if (orderList[i].Email == email)
                 {
-                    Trace.WriteLine("This is Email: " + user.Email);
-                    return user.CoffeeData.Count;
+                    count= orderList[i].Count;
                 }
+                Trace.WriteLine("This is Count: "+count);
             }
-            return 0;
+            if (count >= 10)
+            {
+                return true;
+            }
         }
-        return 0;
+        return false;
     }
 
 }

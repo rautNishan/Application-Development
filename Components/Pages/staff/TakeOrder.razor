@@ -130,7 +130,7 @@
                 </tr>
             }
         }
-      <p style="text-align: center;">Total price: @CalculateTotalPrice()</p>
+      <p style="text-align: center;">Total price: @CalculateTotalPrice(null,free)</p>
     </tbody>
 </table>
 @if(!isMember){
@@ -161,6 +161,8 @@
 
 @code {
     string message = "";
+    int? discount=null;
+    bool free=false;
     string messageClass="";
     List<CommonModel>? coffeeList = new List<CommonModel>();
     bool showMemberModel = false;
@@ -201,10 +203,12 @@
                     Trace.WriteLine(item.Name);
                 }
             }
-public decimal CalculateTotalPrice()
+public decimal CalculateTotalPrice(int? discount, bool free)
 {
     decimal totalPrice = 0;
-
+      if(free){
+        return totalPrice;
+    }
     foreach (var coffee in orderList)
     {
         totalPrice += coffee.Price;
@@ -217,7 +221,7 @@ public decimal CalculateTotalPrice()
             }
         }
     }
-
+    
     return totalPrice;
 }
     protected async void RemoveFromCart(CommonModel orderedCoffee)
@@ -241,15 +245,19 @@ public decimal CalculateTotalPrice()
             var result = await staffService.isUserRegistered(user.Email);
             if(result.Success)
             {
-                var discoint=await staffService.getDiscount(user.Email);
-                Trace.WriteLine("This is discount: "+discoint); 
-                decimal totalPrice=this.CalculateTotalPrice();
-                @* Order(orderList,user.Email,totalPrice); *@
+                free=await staffService.getIsFree(user.Email);
+                Trace.WriteLine("This is discount in Razor: "+free); 
+                decimal totalPrice=this.CalculateTotalPrice(discount,free);
                 isMember=true;
                 email=user.Email;
                 StateHasChanged();
                 this.message=result.Message;
                 this.messageClass = "success-message";
+                 if(free)
+                {
+                    this.message="Free Coffee For you";
+                    this.messageClass = "success-message";
+                }
             }
             else
             {
@@ -261,9 +269,11 @@ public decimal CalculateTotalPrice()
         }
     protected async void Order()
     {
-        decimal totalPrice=this.CalculateTotalPrice();
-        await staffService.TakeOrder(orderList, email, totalPrice);
+        Trace.WriteLine("This is Discoint: "+discount);
+        decimal totalPrice=this.CalculateTotalPrice(discount,free);
+        await staffService.TakeOrder(orderList, email, totalPrice,free);
         await staffService.clearOrderList();
+        isMember=false;
         StateHasChanged();
     }
 
