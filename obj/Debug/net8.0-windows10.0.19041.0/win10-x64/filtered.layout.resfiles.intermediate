@@ -1,10 +1,5 @@
 Components\Layout\MainLayout.razor.css
 Components\Layout\NavMenu.razor.css
-database\addins.json
-database\admin.json
-database\coffee.json
-database\staff.json
-database\user.json
 OpenSans-Regular.ttf
 appicon.ico
 appiconLargeTile.scale-100.png
