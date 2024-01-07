@@ -23,7 +23,8 @@
             sessionService.SetCurrentUser(false);
             sessionService.setNeedAuthorized(true);
             sessionService.setOnlyCoffee(false);
-            message = result.Message;
+            sessionService.SetCurrentUserType(UserType.admin);
+        message = result.Message;
             messageClass = "success-message";
             notificationService.Notify(message, messageClass);
             NavigationManager.NavigateTo("/admin/login");

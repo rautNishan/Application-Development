@@ -241,8 +241,9 @@ public decimal CalculateTotalPrice()
             var result = await staffService.isUserRegistered(user.Email);
             if(result.Success)
             {
-                decimal totalPrice=this.CalculateTotalPrice();
                 var discoint=await staffService.getDiscount(user.Email);
+                Trace.WriteLine("This is discount: "+discoint); 
+                decimal totalPrice=this.CalculateTotalPrice();
                 @* Order(orderList,user.Email,totalPrice); *@
                 isMember=true;
                 email=user.Email;
