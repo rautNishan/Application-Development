@@ -1,4 +1,5 @@
 GoogleGson.dll
+HarfBuzzSharp.dll
 Jsr305Binding.dll
 Microsoft.AspNetCore.Components.WebView.Maui.dll
 Microsoft.Maui.Controls.Compatibility.dll
@@ -7,6 +8,7 @@ Microsoft.Maui.Controls.Xaml.dll
 Microsoft.Maui.dll
 Microsoft.Maui.Essentials.dll
 Microsoft.Maui.Graphics.dll
+SkiaSharp.dll
 Xamarin.Android.Glide.Annotations.dll
 Xamarin.Android.Glide.DiskLruCache.dll
 Xamarin.Android.Glide.dll
