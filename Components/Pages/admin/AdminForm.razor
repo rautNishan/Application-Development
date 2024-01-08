@@ -13,18 +13,21 @@
     </div>
     @if (!sessionService.getCustomerOnly())
     {
-         <div class="form-group">
-        <label for="password">Password:</label>
-        <input required id="password" type="password" @bind="Model.Password" />
-        <ValidationMessage For="@(() => Model.Password)" />
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input required id="password" type="password" @bind="Model.Password" />
+            <ValidationMessage For="@(() => Model.Password)" />
         </div>
         <div class="form-group">
             <label for="userType">UserType:</label>
-            <input required id="userType" type="text" @bind="Model.userType" />
+            <select @bind="Model.userType">
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+            </select>
             <ValidationMessage For="@(() => Model.userType)" />
         </div>
     }
-    @if(sessionService.getCustomerOnly())
+    @if (sessionService.getCustomerOnly())
     {
         <div class="form-group">
             <label for="Email">Email:</label>
@@ -42,9 +45,14 @@
     public EventCallback OnSubmit { get; set; }
 
     [Parameter]
-    public UserModel Model { get; set; } = new UserModel { userType = null, Password = null };
+    public UserModel Model { get; set; } = new UserModel { userType=UserType.admin,Password = null };
     [Parameter]
     public string? message { get; set; }
     [Parameter]
     public string? messageClass { get; set; }
+    string UserTypeAsString
+    {
+        get => Model.userType.ToString();
+        set => Model.userType = Enum.Parse<UserType>(value);
+    }
 }
