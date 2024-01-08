@@ -136,7 +136,7 @@
         var needAuth = await this.NeedAuthentication();
         if (!needAuth)
         {
-            var result = await actionService.Delete<BaseModel>(addins.Id, "addins.json");
+            var result = await actionService.Delete<AddinsModel>(addins.Id, "addins.json");
             if (result.Success)
             {
                 addinsList.Remove(addins);
