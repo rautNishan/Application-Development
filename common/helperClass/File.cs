@@ -15,6 +15,7 @@ public class FileManagement
             throw new InvalidOperationException("Could not find the project directory.");
         }
         var path = Path.Combine(projectDirectory, dir, fileName);
+        Trace.WriteLine("This is Path: " + path);
         return path;
     }
 }
