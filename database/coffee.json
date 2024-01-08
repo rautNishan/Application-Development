@@ -1,1 +1,1 @@
-[{"Name":"Espresso","CoffeeType":"Espresso","Size":"Small","Price":120,"index":0,"AddIns":[],"Id":1},{"Name":"Latte","CoffeeType":"Drip","Size":"Medium","Price":80,"index":0,"AddIns":[],"Id":2},{"Name":"Cappuccino","CoffeeType":"Drip","Size":"Large","Price":100,"index":0,"AddIns":[],"Id":3}]
+[{"Name":"Cappuccino","CoffeeType":"Espresso","Size":"Large","Price":100,"index":0,"AddIns":[],"Id":1}]

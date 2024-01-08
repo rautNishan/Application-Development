@@ -93,7 +93,18 @@ public class StaffService
         if (File.Exists(path))
         {
             var existingData = await File.ReadAllTextAsync(path);
-            userList = JsonSerializer.Deserialize<List<UserModel>>(existingData) ?? new List<UserModel>();
+            try
+            {
+                userList = JsonSerializer.Deserialize<List<UserModel>>(existingData) ?? new List<UserModel>();
+                for (int i = 0; i < userList.Count; i++)
+                {
+                    Trace.WriteLine("This is Email: " + userList[i].Email);
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("Error during deserialization: " + ex.Message);
+            }
         }
         for (int i = 0; i < userList.Count; i++)
         {
@@ -110,10 +121,12 @@ public class StaffService
     public async Task<bool> getIsFree(string email)
     {
         var path = new FileManagement().DirectoryPath("database", "orderData.json");
+        Trace.WriteLine("This is Path in Get is Free: " + path);
         int count = 0;
         List<OrderModel> orderList = new List<OrderModel>();
         if (File.Exists(path))
         {
+            Trace.WriteLine("File Exists");
             var existingData = await File.ReadAllTextAsync(path);
             orderList = JsonSerializer.Deserialize<List<OrderModel>>(existingData) ?? new List<OrderModel>();
             Trace.WriteLine("This is Order Count: " + orderList.Count());
@@ -133,86 +146,86 @@ public class StaffService
         return false;
     }
 
-public async Task<bool> IsRegularCustomer(string email)
-{
-    var orderPath = new FileManagement().DirectoryPath("database", "orderData.json");
-    var userPath = new FileManagement().DirectoryPath("database", "user.json");
-    List<OrderModel> orderList = new List<OrderModel>();
-    List<UserModel> userList = new List<UserModel>();
-    if (File.Exists(orderPath))
+    public async Task<bool> IsRegularCustomer(string email)
     {
-        var existingOrderData = await File.ReadAllTextAsync(orderPath);
-        orderList = JsonSerializer.Deserialize<List<OrderModel>>(existingOrderData) ?? new List<OrderModel>();
-    }
-    if (File.Exists(userPath))
-    {
-        var existingUserData = await File.ReadAllTextAsync(userPath);
-        userList = JsonSerializer.Deserialize<List<UserModel>>(existingUserData) ?? new List<UserModel>();
-    }
-
-    var userOrders = orderList.Where(o => o.Email == email).OrderBy(o => o.Date).ToList();
-    var user = userList.FirstOrDefault(u => u.Email == email);
-    if (user == null)
-    {
-        return false;
-    }
-
-    var groupedOrders = userOrders.GroupBy(o => new { o.Date.Year, o.Date.Month, o.Date.Day });
-    var distinctDaysWithOrdersInCurrentMonth = groupedOrders.Count(g => g.Key.Month == DateTime.Now.Month && g.Key.Year == DateTime.Now.Year);
-
-    if (distinctDaysWithOrdersInCurrentMonth >= 2)
-    {
-        Trace.WriteLine("This is User: ", user.Email);
-        var currentMonth = DateTime.Now.Month;
-        var currentYear = DateTime.Now.Year;
-        user.DiscountEligibleUntil = new DateTime(currentYear, currentMonth == 12 ? 1 : currentMonth + 1, DateTime.DaysInMonth(currentYear, currentMonth == 12 ? 1 : currentMonth + 1));
-        var updatedUserData = JsonSerializer.Serialize(userList);
-        await File.WriteAllTextAsync(userPath, updatedUserData);
-        return true;
-    }
-
-    return false;
-}
-   public async Task<bool> IsEligibleForDiscount(string email)
-{
-    try
-    {
+        var orderPath = new FileManagement().DirectoryPath("database", "orderData.json");
         var userPath = new FileManagement().DirectoryPath("database", "user.json");
+        List<OrderModel> orderList = new List<OrderModel>();
         List<UserModel> userList = new List<UserModel>();
+        if (File.Exists(orderPath))
+        {
+            var existingOrderData = await File.ReadAllTextAsync(orderPath);
+            orderList = JsonSerializer.Deserialize<List<OrderModel>>(existingOrderData) ?? new List<OrderModel>();
+        }
         if (File.Exists(userPath))
         {
             var existingUserData = await File.ReadAllTextAsync(userPath);
             userList = JsonSerializer.Deserialize<List<UserModel>>(existingUserData) ?? new List<UserModel>();
         }
 
+        var userOrders = orderList.Where(o => o.Email == email).OrderBy(o => o.Date).ToList();
         var user = userList.FirstOrDefault(u => u.Email == email);
         if (user == null)
         {
             return false;
         }
 
-        DateTime discountEligibleUntil;
-        Trace.WriteLine("This is Date of Eligible: " + user.DiscountEligibleUntil);
-        if (user.DiscountEligibleUntil != null)
+        var groupedOrders = userOrders.GroupBy(o => new { o.Date.Year, o.Date.Month, o.Date.Day });
+        var distinctDaysWithOrdersInCurrentMonth = groupedOrders.Count(g => g.Key.Month == DateTime.Now.Month && g.Key.Year == DateTime.Now.Year);
+
+        if (distinctDaysWithOrdersInCurrentMonth >= 2)
         {
-            if (DateTime.TryParse(user.DiscountEligibleUntil.ToString(), out discountEligibleUntil))
-            {
-                Trace.WriteLine("10% Discount for 1 Month");
-                bool value = DateTime.Now <= discountEligibleUntil;
-                Trace.WriteLine("This is Value: " + value);
-                return value;
-            }
-            else
-            {
-                Trace.WriteLine("Invalid date: " + user.DiscountEligibleUntil);
-                return false;
-            }
+            Trace.WriteLine("This is User: ", user.Email);
+            var currentMonth = DateTime.Now.Month;
+            var currentYear = DateTime.Now.Year;
+            user.DiscountEligibleUntil = new DateTime(currentYear, currentMonth == 12 ? 1 : currentMonth + 1, DateTime.DaysInMonth(currentYear, currentMonth == 12 ? 1 : currentMonth + 1));
+            var updatedUserData = JsonSerializer.Serialize(userList);
+            await File.WriteAllTextAsync(userPath, updatedUserData);
+            return true;
         }
+
         return false;
     }
-    catch (Exception error)
+    public async Task<bool> IsEligibleForDiscount(string email)
     {
-        throw error;
+        try
+        {
+            var userPath = new FileManagement().DirectoryPath("database", "user.json");
+            List<UserModel> userList = new List<UserModel>();
+            if (File.Exists(userPath))
+            {
+                var existingUserData = await File.ReadAllTextAsync(userPath);
+                userList = JsonSerializer.Deserialize<List<UserModel>>(existingUserData) ?? new List<UserModel>();
+            }
+
+            var user = userList.FirstOrDefault(u => u.Email == email);
+            if (user == null)
+            {
+                return false;
+            }
+
+            DateTime discountEligibleUntil;
+            Trace.WriteLine("This is Date of Eligible: " + user.DiscountEligibleUntil);
+            if (user.DiscountEligibleUntil != null)
+            {
+                if (DateTime.TryParse(user.DiscountEligibleUntil.ToString(), out discountEligibleUntil))
+                {
+                    Trace.WriteLine("10% Discount for 1 Month");
+                    bool value = DateTime.Now <= discountEligibleUntil;
+                    Trace.WriteLine("This is Value: " + value);
+                    return value;
+                }
+                else
+                {
+                    Trace.WriteLine("Invalid date: " + user.DiscountEligibleUntil);
+                    return false;
+                }
+            }
+            return false;
+        }
+        catch (Exception error)
+        {
+            throw error;
+        }
     }
-}
 }

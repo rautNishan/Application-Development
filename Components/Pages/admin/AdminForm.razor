@@ -21,6 +21,7 @@
         <div class="form-group">
             <label for="userType">UserType:</label>
             <select @bind="Model.userType">
+                <option value="">Choose user type</option>
                 <option value="admin">Admin</option>
                 <option value="staff">Staff</option>
             </select>
@@ -45,7 +46,7 @@
     public EventCallback OnSubmit { get; set; }
 
     [Parameter]
-    public UserModel Model { get; set; } = new UserModel { userType=UserType.admin,Password = null };
+    public UserModel Model { get; set; } = new UserModel { userType = UserType.admin, Password = null };
     [Parameter]
     public string? message { get; set; }
     [Parameter]

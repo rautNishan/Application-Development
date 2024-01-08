@@ -141,7 +141,7 @@
 }
 @if (showMemberModel)
 {
-    <div class="modal" tabindex="-1" role="dialog" style="display:block;">
+  <div class="modal" tabindex="-1" role="dialog" style="display:block;">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -149,10 +149,12 @@
                 </div>
                 <div class="modal-body">
                     <input type="email" @bind="CustomerModel.Email" placeholder="Enter email" />
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="button" @onclick="()=>CheckUserExist(CustomerModel)" style="background-color: green; width: 120px;">Check User</button>
+                    </div>
                 </div>
-                <button type="button" class="edit-button" @onclick="()=>CheckUserExist(CustomerModel)">Order</button>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                 <button type="button" @onclick="CloseModal" style="background-color: red; width: 100%; border: none;">Close</button>
                 </div>
             </div>
         </div>
@@ -247,10 +249,13 @@ public decimal CalculateTotalPrice( bool free)
         protected async void CheckUserExist(UserModel user)
         {
             CloseModal();
+            Trace.WriteLine("This isEmail: "+user.Email);
             var result = await staffService.isUserRegistered(user.Email);
             if(result.Success)
             {
+                Trace.WriteLine("Found");
                 free=await staffService.getIsFree(user.Email);
+                Trace.WriteLine("This is free: "+free);
                 checkEligable=await staffService.IsEligibleForDiscount(user.Email);
                 Trace.WriteLine("Is user eligible for discount: "+isRegularCustomer);
                 if(checkEligable){
