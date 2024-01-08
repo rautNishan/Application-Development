@@ -151,7 +151,7 @@
         var noneedAuth = await this.NeedAuthentication();
         if (!noneedAuth)
         {
-            var result = await actionService.Delete<BaseModel>(staff.Id, "staff.json");
+            var result = await actionService.Delete<StaffModel>(staff.Id, "staff.json");
             if (result.Success)
             {
                 staffList.Remove(staff);
