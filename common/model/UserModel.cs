@@ -13,7 +13,8 @@ public class UserModel : BaseModel
     [EmailAddress(ErrorMessage = "Invalid Email Address")]
     public string? Email { get; set; }
 
-    public bool isDiscountMonth=false;
+    // public bool isDiscountMonth=false;
 
-    public int DiscountMonth=0;
+    // public int DiscountMonth=0;
+     public DateTime? DiscountEligibleUntil { get; set; }
 }

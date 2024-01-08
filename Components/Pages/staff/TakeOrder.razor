@@ -130,7 +130,7 @@
                 </tr>
             }
         }
-      <p style="text-align: center;">Total price: @CalculateTotalPrice(0,free)</p>
+      <p style="text-align: center;">Total price: @CalculateTotalPrice(free)</p>
     </tbody>
 </table>
 @if(!isMember){
@@ -161,7 +161,11 @@
 
 @code {
     string message = "";
+    bool isRegularCustomer=false;
+
+    bool checkEligable=false;
     decimal discount=0;
+    bool isDiscount=false;
     bool free=false;
     string messageClass="";
     List<CommonModel>? coffeeList = new List<CommonModel>();
@@ -203,7 +207,7 @@
                     Trace.WriteLine(item.Name);
                 }
             }
-public decimal CalculateTotalPrice(decimal discount, bool free)
+public decimal CalculateTotalPrice( bool free)
 {
     decimal totalPrice = 0;
       if(free){
@@ -221,7 +225,7 @@ public decimal CalculateTotalPrice(decimal discount, bool free)
             }
         }
     }
-    Trace.WriteLine("This is discount: "+discount);
+    Trace.WriteLine("This is discount in CalculatePrice: "+discount);
     totalPrice=totalPrice-(totalPrice*discount/100);
     return totalPrice;
 }
@@ -247,14 +251,31 @@ public decimal CalculateTotalPrice(decimal discount, bool free)
             if(result.Success)
             {
                 free=await staffService.getIsFree(user.Email);
+                checkEligable=await staffService.IsEligibleForDiscount(user.Email);
+                Trace.WriteLine("Is user eligible for discount: "+isRegularCustomer);
+                if(checkEligable){
+                    Trace.WriteLine("Yes User is: ");
+                    this.discount=10;
+                } 
+                if(!checkEligable){
+                        isRegularCustomer=await staffService.IsRegularCustomer(user.Email);
+                }
+                 if(isRegularCustomer){
+                    Trace.WriteLine("Yes User is");
+                    this.discount=10;
+                } 
+                Trace.WriteLine("This is discount in Razor: "+isRegularCustomer);
                 Trace.WriteLine("This is discount in Razor: "+free); 
-                decimal totalPrice=this.CalculateTotalPrice(discount,free);
+                decimal totalPrice=this.CalculateTotalPrice(free);
                 isMember=true;
                 email=user.Email;
-                StateHasChanged();
                 this.message=result.Message;
                 this.messageClass = "success-message";
-                 if(free)
+                if(this.discount>0){
+                    this.message="Discounted Coffee For you for entire 1 month";
+                    this.messageClass = "success-message";
+                }
+                if(free)
                 {
                     this.message="Free Coffee For you";
                     this.messageClass = "success-message";
@@ -266,15 +287,17 @@ public decimal CalculateTotalPrice(decimal discount, bool free)
                 this.messageClass = "fail-message";
 
             }
-            StateHasChanged();
+              StateHasChanged();
         }
     protected async void Order()
     {
         Trace.WriteLine("This is Discoint: "+discount);
-        decimal totalPrice=this.CalculateTotalPrice(discount,free);
+        decimal totalPrice=this.CalculateTotalPrice(free);
         await staffService.TakeOrder(orderList, email, totalPrice,free);
         await staffService.clearOrderList();
         isMember=false;
+        discount=0;
+        message="Oder Placed Successfully";
         StateHasChanged();
     }
 
