@@ -1,11 +1,14 @@
 @namespace FinalCoffee1.Pages.admin
 @using FinalCoffee1.common.helperServices;
 @using FinalCoffee1.Modules.Admin.service;
+@using FinalCoffee1.Modules.Staff.service;
 @using System.Diagnostics
 @inject SessionService sessionService;
 @inject NavigationManager NavigationManager;
 @inject NotificationService notificationService;
 @inject AdminService adminService;
+@inject StaffService staffService;
+@inject ActionService actionService;
 @page "/admin/logout"
 
 <button @onclick="HandleSubmit">Logout</button>
@@ -17,7 +20,7 @@
     private string? messageClass = "";
     private async Task HandleSubmit()
     {
-        var result = await adminService.logOut();
+        var result = await actionService.logOut();
         if (result.Success)
         {
             sessionService.SetCurrentUser(false);
@@ -25,6 +28,7 @@
             sessionService.setOnlyCoffee(false);
             sessionService.setCustomerOnly(false);
             sessionService.SetCurrentUserType(UserType.admin);
+            await staffService.clearOrderList();
         message = result.Message;
             messageClass = "success-message";
             notificationService.Notify(message, messageClass);

@@ -257,14 +257,12 @@ public decimal CalculateTotalPrice( bool free)
                 free=await staffService.getIsFree(user.Email);
                 Trace.WriteLine("This is free: "+free);
                 checkEligable=await staffService.IsEligibleForDiscount(user.Email);
-                Trace.WriteLine("Is user eligible for discount: "+isRegularCustomer);
+                Trace.WriteLine("Is user eligible for discount: "+checkEligable);
                 if(checkEligable){
                     Trace.WriteLine("Yes User is: ");
                     this.discount=10;
                 } 
-                if(!checkEligable){
-                        isRegularCustomer=await staffService.IsRegularCustomer(user.Email);
-                }
+                isRegularCustomer=await staffService.IsRegularCustomer(user.Email);
                  if(isRegularCustomer){
                     Trace.WriteLine("Yes User is");
                     this.discount=10;

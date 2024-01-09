@@ -22,10 +22,10 @@ public class AdminService
         this.authentication = authentication;
     }
 
-    public Task<CustomType> logOut()
-    {
-        return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
-    }
+    // public Task<CustomType> logOut()
+    // {
+    //     return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
+    // }
 
     public async Task readStaff()
     {
@@ -131,8 +131,7 @@ public class AdminService
                 if (orders.Any())
                 {
                     var totalRevenue = orders.Sum(order =>
-                        order.CoffeeData.Sum(coffee =>
-                            coffee.Price + coffee.AddIns.Sum(addIn => addIn.Price)));
+                        order.TotalPrice);
 
                     string reportDirPath = reportType == "daily"
                         ? fileManagement.DirectoryPath("reports", "days")

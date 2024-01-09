@@ -86,8 +86,8 @@ public class ActionService
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
-            return new CustomType { Success = false, Message = ex.Message };
+            Trace.WriteLine("This is Exception " + ex);
+            return new CustomType { Success = false, Message = "Please Select User Type" };
         }
     }
 
@@ -121,6 +121,10 @@ public class ActionService
         {
             return new CustomType { Success = false, Message = error.Message };
         }
+    }
+    public Task<CustomType> logOut()
+    {
+        return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
     }
 
 }
