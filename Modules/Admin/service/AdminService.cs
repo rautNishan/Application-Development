@@ -22,10 +22,6 @@ public class AdminService
         this.authentication = authentication;
     }
 
-    // public Task<CustomType> logOut()
-    // {
-    //     return Task.FromResult(new CustomType { Success = true, Message = "Logout Success" });
-    // }
 
     public async Task readStaff()
     {
@@ -51,50 +47,41 @@ public class AdminService
         Trace.WriteLine("This is staff List: " + this.staffList);
         return this.staffList;
     }
-    public async Task<CustomType> Edit(int id, UserModel model, string fileName)
+public async Task<CustomType> Edit(int id, UserModel model, string fileName)
+{
+    try
     {
-        try
+        var path = new FileManagement().DirectoryPath("database", fileName);
+        if (!File.Exists(path))
         {
-            Trace.WriteLine("This is password: " + model.Password);
-            var path = new FileManagement().DirectoryPath("database", fileName);
-            if (File.Exists(path))
-            {
-                var existingData = await File.ReadAllTextAsync(path);
-                var list = JsonSerializer.Deserialize<List<UserModel>>(existingData) ?? new List<UserModel>();
-                var itemToEdit = list.FirstOrDefault(c => c.Id == id);
-                Trace.WriteLine("This is ItemToEdit: " + itemToEdit);
-                if (itemToEdit != null)
-                {
-                    if (itemToEdit.GetType().GetProperty("Username") != null)
-                    {
-                        itemToEdit.Username = model.Username;
-                    }
-                    if (itemToEdit.GetType().GetProperty("Password") != null)
-                    {
-                        model.Password = this.authentication.GenerateHash(model.Password);
-                        itemToEdit.Password = model.Password;
-                    }
-                    int index = list.FindIndex(c => c.Id == id);
-                    list[index] = itemToEdit;
-                    var jsonData = JsonSerializer.Serialize(list);
-                    await File.WriteAllTextAsync(path, jsonData);
-                    return new CustomType { Success = true, Message = "Updated" };
-                }
-                else
-                {
-                    return new CustomType { Success = false, Message = "Item not found" };
-                }
-            }
-            else
-            {
-                return new CustomType { Success = false, Message = "File not found" };
-            }
+            return new CustomType { Success = false, Message = "File not found" };
         }
-        catch (Exception error)
+
+        var existingData = await File.ReadAllTextAsync(path);
+        var list = JsonSerializer.Deserialize<List<UserModel>>(existingData) ?? new List<UserModel>();
+        var itemToEdit = list.FirstOrDefault(c => c.Id == id);
+
+        if (itemToEdit == null)
         {
-            return new CustomType { Success = false, Message = error.Message };
+            return new CustomType { Success = false, Message = "Not Found" };
         }
+
+        itemToEdit.Username = model.Username ?? itemToEdit.Username;
+        itemToEdit.Password = model.Password != null ? this.authentication.GenerateHash(model.Password) : itemToEdit.Password;
+
+        int index = list.FindIndex(c => c.Id == id);
+        list[index] = itemToEdit;
+
+        var jsonData = JsonSerializer.Serialize(list);
+        await File.WriteAllTextAsync(path, jsonData);
+
+        return new CustomType { Success = true, Message = "Updated Successfully" };
     }
+    catch (Exception error)
+    {
+        return new CustomType { Success = false, Message = error.Message };
+    }
+}
 
     [Obsolete]
     public async Task<CustomType> GenerateReport(DateTime date, string reportType)

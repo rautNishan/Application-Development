@@ -10,7 +10,15 @@ public class SessionService
     public event Action OnChange;
     public void NotifyStateChanged() => OnChange?.Invoke();
     private bool currentUser;
-
+    private int adminId = 1;
+    public int getId()
+    {
+        return this.adminId;
+    }
+    public void setId(int id)
+    {
+        this.adminId = id;
+    }
     public void SetCurrentUserType(UserType userType)
     {
         this.CurrentUserType = userType;

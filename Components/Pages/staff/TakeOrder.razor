@@ -261,12 +261,15 @@ public decimal CalculateTotalPrice( bool free)
                 if(checkEligable){
                     Trace.WriteLine("Yes User is: ");
                     this.discount=10;
-                } 
-                isRegularCustomer=await staffService.IsRegularCustomer(user.Email);
+                }
+                if(!checkEligable){
+                    isRegularCustomer=await staffService.IsRegularCustomer(user.Email);
                  if(isRegularCustomer){
                     Trace.WriteLine("Yes User is");
                     this.discount=10;
                 } 
+                } 
+                
                 Trace.WriteLine("This is discount in Razor: "+isRegularCustomer);
                 Trace.WriteLine("This is discount in Razor: "+free); 
                 decimal totalPrice=this.CalculateTotalPrice(free);
