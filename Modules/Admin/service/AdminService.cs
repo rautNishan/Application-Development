@@ -225,5 +225,30 @@ public async Task<CustomType> Edit(int id, UserModel model, string fileName)
             return new CustomType { Success = false, Message = $"An error occurred: {ex.Message}" };
         }
     }
+    public async Task<(List<OrderModel>, decimal)> GetSalesTransactionsAndTotalRevenue()
+{
+    try
+    {
+        var path = new FileManagement().DirectoryPath("database", "orderData.json");
+        if (File.Exists(path))
+        {
+            var existingData = await File.ReadAllTextAsync(path);
+            var list = JsonSerializer.Deserialize<List<OrderModel>>(existingData) ?? new List<OrderModel>();
 
+            var totalRevenue = list.Sum(order => order.TotalPrice);
+
+            return (list, totalRevenue);
+        }
+        else
+        {
+            Trace.WriteLine("File not found");
+            return (null, 0);
+        }
+    }
+    catch (Exception error)
+    {
+        Trace.WriteLine("An error occurred: " + error.Message);
+        return (null, 0);
+    }
+}
 }
