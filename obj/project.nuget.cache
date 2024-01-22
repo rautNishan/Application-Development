@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qBAyNCrPpOWOIegolbWmFF8zj8PNiCQSs9gs/qnP5m31FXRku0mato8LnTz54aK7QkX4cIDIH9w6Yjtm1graag==",
+  "dgSpecHash": "pR12mo+FIedBOMwUPsY/yt6XAv5vhaIPn9baUPIDJo27QfKhjtiKSjmGUEqKIDfCYCGm3CmZp/5dgEA4Hj/wlQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\FinalCoffee1.csproj",
+  "projectFilePath": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\FinalCoffee1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Acer\\.nuget\\packages\\googlegson\\2.10.1.4\\googlegson.2.10.1.4.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\harfbuzzsharp\\7.3.0\\harfbuzzsharp.7.3.0.nupkg.sha512",
@@ -147,11 +147,7 @@
     "C:\\Users\\Acer\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.9.0.1\\xamarin.kotlin.stdlib.jdk8.1.9.0.1.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.7.2.1\\xamarin.kotlinx.coroutines.android.1.7.2.1.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.7.2.1\\xamarin.kotlinx.coroutines.core.jvm.1.7.2.1.nupkg.sha512",
-    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\8.0.0\\microsoft.netcore.app.crossgen2.win-x64.8.0.0.nupkg.sha512",
-    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.31\\microsoft.windows.sdk.net.ref.10.0.19041.31.nupkg.sha512",
-    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.0\\microsoft.aspnetcore.app.runtime.win-x64.8.0.0.nupkg.sha512",
-    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.0\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.0.nupkg.sha512",
-    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.0\\microsoft.netcore.app.runtime.win-x64.8.0.0.nupkg.sha512"
+    "C:\\Users\\Acer\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.31\\microsoft.windows.sdk.net.ref.10.0.19041.31.nupkg.sha512"
   ],
   "logs": []
 }

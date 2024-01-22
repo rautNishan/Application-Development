@@ -13,149 +13,149 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FinalCoffee1
 build_property.RootNamespace = FinalCoffee1
-build_property.ProjectDir = C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1\
+build_property.ProjectDir = C:\Users\Acer\Desktop\JustNew\Application-Development\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Acer\Desktop\5th semi\Application Develeopment\CW\FinalCoffee1
+build_property.MSBuildProjectDirectory = C:\Users\Acer\Desktop\JustNew\Application-Development
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/App.xaml]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FinalCoffee1.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/MainPage.xaml]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FinalCoffee1.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminChangePassword.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminChangePassword.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pbkNoYW5nZVBhc3N3b3JkLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminForm.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminForm.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pbkZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminGenerateReport.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminGenerateReport.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pbkdlbmVyYXRlUmVwb3J0LnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminLogin.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminLogin.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pbkxvZ2luLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminLogout.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminLogout.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pbkxvZ291dC5yYXpvcg==
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminRegister.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminRegister.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pblJlZ2lzdGVyLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/AdminStaffAdd.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/AdminStaffAdd.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxBZG1pblN0YWZmQWRkLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/admin/TotalTransactions.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/admin/TotalTransactions.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xhZG1pblxUb3RhbFRyYW5zYWN0aW9ucy5yYXpvcg==
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/coffee/AddIngs.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/coffee/AddIngs.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xjb2ZmZWVcQWRkSW5ncy5yYXpvcg==
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/coffee/Coffee.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/coffee/Coffee.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xjb2ZmZWVcQ29mZmVlLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/coffee/CoffeeInput.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/coffee/CoffeeInput.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xjb2ZmZWVcQ29mZmVlSW5wdXQucmF6b3I=
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/Home.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/staff/Member.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/staff/Member.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xzdGFmZlxNZW1iZXIucmF6b3I=
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Pages/staff/TakeOrder.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Pages/staff/TakeOrder.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xzdGFmZlxUYWtlT3JkZXIucmF6b3I=
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Routes.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Routes.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Um91dGVzLnJhem9y
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/_Imports.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/_Imports.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Layout/MainLayout.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = b-x4uznh2jq8
 
-[C:/Users/Acer/Desktop/5th semi/Application Develeopment/CW/FinalCoffee1/Components/Layout/NavMenu.razor]
+[C:/Users/Acer/Desktop/JustNew/Application-Development/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
