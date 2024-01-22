@@ -1,35 +1,35 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\obj\\Debug\\net8.0-android\\scopedcss\\bundle\\FinalCoffee1.styles.css",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\obj\\Debug\\net8.0-android\\scopedcss\\bundle\\FinalCoffee1.styles.css",
       "PackagePath": "staticwebassets\\FinalCoffee1.styles.css"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\css\\admin\\adminLogin.css",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\css\\admin\\adminLogin.css",
       "PackagePath": "staticwebassets\\css\\admin\\adminLogin.css"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\css\\coffee\\coffee.css",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\css\\coffee\\coffee.css",
       "PackagePath": "staticwebassets\\css\\coffee\\coffee.css"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\Acer\\Desktop\\5th semi\\Application Develeopment\\CW\\FinalCoffee1\\wwwroot\\index.html",
+      "Id": "C:\\Users\\Acer\\Desktop\\JustNew\\Application-Development\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
